@@ -1,16 +1,8 @@
-'''
-Created on 29.01.2022
 
-@author: norbert
-'''
 from Operator import Operator
 
 class Grundrechnen():
     
-    __operator: Operator
-    __operand_1: int
-    __operand_2: int
-
     def __init__(self, oper: Operator, op_1: int, op_2: int) -> None:
         self.__operator = oper
         self.__operand_1 = op_1

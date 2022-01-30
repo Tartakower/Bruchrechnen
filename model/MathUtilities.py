@@ -1,7 +1,5 @@
 '''
-Created on 27.01.2022
-
-@author: norbert
+Mathematische Funktionen
 '''
 
 def ggT(a: int, b: int) -> int:

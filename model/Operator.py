@@ -1,8 +1,4 @@
-'''
-Created on 28.01.2022
 
-@author: norbert
-'''
 from enum import Enum
 
 class Operator(Enum):
