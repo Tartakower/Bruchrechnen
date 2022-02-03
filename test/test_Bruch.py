@@ -1,5 +1,5 @@
 
-from Bruch import Bruch
+from UnaererAusdruck import Bruch, GemischteZahl
 
 import pytest
 
@@ -33,5 +33,4 @@ def test_kuerze() -> None:
     assert Bruch(1,3) == Bruch(17, 51).kuerze()
     
 def test_BerechneGemischteZahl() -> None:
-    from GemischteZahl import GemischteZahl
     assert GemischteZahl(5, Bruch(5,6)) == Bruch(70,12).berechneGemischteZahl()
