@@ -16,9 +16,9 @@ def test_constructor() -> None:
     assert -3 == bruch.zaehler
     assert 4 == bruch.nenner   
         
-def test_berechneDezimalzahl() -> None:
+def test_berechneWert() -> None:
     bruch = Bruch(3,4)
-    assert bruch.berechneDezimalzahl() == 0.75
+    assert bruch.berechneWert() == 0.75
     
 def test_istEchterBruch() -> None:
     assert Bruch(5,6).istEchterBruch()

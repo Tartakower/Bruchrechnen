@@ -22,13 +22,19 @@ class Bruch(UnaererAusdruck):
     def nenner(self) -> int:
         return self.__nenner
 
+    def __str__(self) -> str:
+        return str(self.zaehler) + " / " + str(self.nenner)
+
     def __eq__(self, obj: Any) -> bool:
         if isinstance(obj, Bruch):
             return self.zaehler == obj.zaehler and self.nenner == obj.nenner
         return False
 
-    def berechneDezimalzahl(self) -> float:
+    def berechneWert(self) -> float:
         return self.zaehler / self.nenner
+    
+    def berechneDezimalzahl(self) -> DezimalZahl:
+        return DezimalZahl(self.berechneWert())
     
     def istEchterBruch(self) -> bool:
         return self.zaehler < self.nenner
@@ -80,4 +86,14 @@ class GemischteZahl(UnaererAusdruck):
 
 """  """
 class DezimalZahl(UnaererAusdruck):
-    pass
+
+    def __init__(self, zahl: float) -> None:
+        self.__zahl = zahl
+
+    @property
+    def zahl(self) -> float:
+        return self.__zahl
+
+    def __str__(self) -> str:
+        return str(self.zahl)
+    
