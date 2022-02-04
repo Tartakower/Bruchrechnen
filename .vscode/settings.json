@@ -1,10 +1,2 @@
 {
-    "python.analysis.extraPaths": [
-        "model", "test"
-    ],
-    "python.testing.pytestArgs": [
-        "."
-    ],
-    "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
 }

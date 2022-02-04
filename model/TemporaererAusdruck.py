@@ -1,12 +1,15 @@
 from __future__ import annotations
 
-from Ausdruck import BinaererAusdruck
+from Ausdruck import Ausdruck
 from Grundrechnen import Grundrechnen
 import MathUtilities
 from Operator import Operator
 from UnaererAusdruck import Bruch
 
-class AdditionBruch(BinaererAusdruck):
+class TemporaererAusdruck(Ausdruck):
+    pass
+
+class AdditionBruch(TemporaererAusdruck):
     
     def __init__(self, op_1: int, op_2: int, nenner: int) -> None:
         if nenner == 0:
@@ -29,7 +32,7 @@ class AdditionBruch(BinaererAusdruck):
     def berechneBruch(self) -> Bruch:
         return Bruch(self.zaehler.berechne(), self.nenner)
 
-class MultBruch(BinaererAusdruck):
+class MultBruch(TemporaererAusdruck):
     
     def __init__(self, z_1: int, n_1: int, z_2: int, n_2: int) -> None:
         self.__zaehler = Grundrechnen(Operator.MULT, z_1, z_2)

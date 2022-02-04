@@ -23,7 +23,7 @@ class Bruch(UnaererAusdruck):
         return self.__nenner
 
     def __str__(self) -> str:
-        return str(self.zaehler) + " / " + str(self.nenner)
+        return str(self.zaehler) + "/" + str(self.nenner)
 
     def __eq__(self, obj: Any) -> bool:
         if isinstance(obj, Bruch):
@@ -69,9 +69,12 @@ class GemischteZahl(UnaererAusdruck):
         if isinstance(obj, GemischteZahl):
             return self.ganzzahl == obj.ganzzahl and self.bruch == obj.bruch
         return False
+
+    def __str__(self) -> str:
+        return str(self.ganzzahl) + " " + str(self.bruch)
     
-    def berechneDezimalzahl(self) -> float:
-        return self.ganzzahl + self.bruch.berechneDezimalzahl()
+    def berechneDezimalzahl(self) -> DezimalZahl:
+        return DezimalZahl(self.ganzzahl + self.bruch.berechneWert())
     
     def istGekuerzt(self) -> bool:
         return self.bruch.istEchterBruch() and self.bruch.istGekuerzt()

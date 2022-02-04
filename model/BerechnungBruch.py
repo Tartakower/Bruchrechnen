@@ -10,8 +10,8 @@ class BerechnungBruch(Berechnung):
     def __init__(self, ausdruck: Bruch) -> None:
         super().__init__(ausdruck)
 
-    def __str__(self) -> str:
-        return super().__str__()
+    # def __str__(self) -> str:
+    #     return super().__str__()
 
     def getStart(self) -> Bruch:
         return cast(Bruch, super().getStart())

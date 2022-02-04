@@ -16,6 +16,9 @@ class Berechnung(object):
         return self.__berechnung
 
     def __str__(self) -> str:
+        return str(self.__start)
+
+    def schreibeBerechnung(self) -> str:
         if not self.istBerechnungErfolgt():
             self.berechne()
 
@@ -32,7 +35,7 @@ class Berechnung(object):
         self.__berechnung.append(ausdruck)
 
     def istBerechnungErfolgt(self) -> bool:
-        return self.__berechnung
+        return len(self.__berechnung) == 1
 
     @abstractmethod
     def berechne(self) -> None:
