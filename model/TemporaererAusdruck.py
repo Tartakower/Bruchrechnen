@@ -35,38 +35,34 @@ class AdditionBruch(TemporaererAusdruck):
 class MultBruch(TemporaererAusdruck):
     
     def __init__(self, z_1: int, n_1: int, z_2: int, n_2: int) -> None:
-        self.__zaehler = Grundrechnen(Operator.MULT, z_1, z_2)
-        self.__nenner = Grundrechnen(Operator.MULT, n_1, n_2)
+        self.__z1 = z_1
+        self.__n1 = n_1
+        self.__z2 = z_2
+        self.__n2 = n_2
         
-    @property
-    def zaehler(self) -> Grundrechnen:
-        return self.__zaehler
-
-    @property
-    def nenner(self) -> Grundrechnen:
-        return self.__nenner
-    
     def __str__(self) -> str:
-        return str(self.zaehler) + " / " + str(self.nenner)
+        return "(" + str(Grundrechnen(Operator.MULT, self.__z1, self.__z2)) + "," + str(Grundrechnen(Operator.MULT, self.__n1, self.__n2)) + ")"
+
+    def ist_direkt_gekuerzt(self):
+        return MathUtilities.ggT(self.__z1, self.__n1) == 1 and MathUtilities.ggT(self.__z2, self.__n2) == 1
+
+    def ist_kreuz_gekuerzt(self):
+        MathUtilities.ggT(self.__z1, self.__n2) == 1 and MathUtilities.ggT(self.__z2, self.__n1) == 1
     
     def direkt_kuerzen(self) -> MultBruch:
-        ggt = MathUtilities.ggT(self.zaehler.operand_1, self.nenner.operand_1)
-        z_1 = self.zaehler.operand_1 // ggt
-        n_1 = self.nenner.operand_1 // ggt
-        ggt = MathUtilities.ggT(self.zaehler.operand_2, self.nenner.operand_2)
-        z_2 = self.zaehler.operand_2 // ggt
-        n_2 = self.nenner.operand_2 // ggt
-        return MultBruch(z_1, n_1, z_2, n_2)
+        ggt_1 = MathUtilities.ggT(self.__z1, self.__n1)
+        ggt_2 = MathUtilities.ggT(self.__z2, self.__n2)
+        return MultBruch(self.__z1 // ggt_1, self.__n1 // ggt_1, self.__z2 // ggt_2, self.__n2 // ggt_2)
     
     def kreuz_kuerzen(self) -> MultBruch:
-        ggt = MathUtilities.ggT(self.zaehler.operand_1, self.nenner.operand_2)
-        z_1 = self.zaehler.operand_1 // ggt
-        n_2 = self.nenner.operand_2 // ggt
-        ggt = MathUtilities.ggT(self.zaehler.operand_2, self.nenner.operand_1)
-        z_2 = self.zaehler.operand_2 // ggt
-        n_1 = self.nenner.operand_1 // ggt
-        return MultBruch(z_1, n_1, z_2, n_2)
+        ggt_1 = MathUtilities.ggT(self.__z1, self.__n2)
+        ggt_2 = MathUtilities.ggT(self.__z2, self.__n1)
+        return MultBruch(self.__z1 // ggt_1, self.__n1 // ggt_2, self.__z2 // ggt_2, self.__n2 // ggt_1)
     
 
     def berechneBruch(self) -> Bruch:
-        return Bruch(self.zaehler.berechne(), self.nenner.berechne())
+        return Bruch(self.__z1 * self.__z2, self.__n1 * self.__n2)
+
+    @staticmethod
+    def erzeugeMultBruch(bruch_1: Bruch, bruch_2: Bruch):
+        return MultBruch(bruch_1.zaehler, bruch_1.nenner, bruch_2.zaehler, bruch_2.nenner)

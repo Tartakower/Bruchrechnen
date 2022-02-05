@@ -3,7 +3,9 @@
 from typing import cast
 from Ausdruck import BinaererAusdruck
 from Berechnung import Berechnung
+from BerechnungBruch import BerechnungBruch
 from Operator import Operator
+from TemporaererAusdruck import MultBruch
 from UnaererAusdruck import Bruch
 
 
@@ -33,6 +35,14 @@ class BerechnungMultiplikation(Berechnung):
             bruch_1 = bruch_1.kuerze()
             bruch_2 = bruch_2.kuerze()
             self.append(BinaererAusdruck(Operator.MULT, bruch_1, bruch_2))
+        tempBruch: MultBruch = MultBruch.erzeugeMultBruch(bruch_1, bruch_2)
+        self.append(tempBruch)
+        if not tempBruch.ist_kreuz_gekuerzt():
+            tempBruch = tempBruch.kreuz_kuerzen()
+            self.append(tempBruch)
+        bruch: Bruch = tempBruch.berechneBruch()
+        berechnungBruch: BerechnungBruch = BerechnungBruch(bruch)
+        berechnungBruch.berechne()
 
     def berechneQuotient(self, ausdruck: BinaererAusdruck) -> None:
         pass

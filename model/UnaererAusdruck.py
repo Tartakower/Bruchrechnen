@@ -23,7 +23,7 @@ class Bruch(UnaererAusdruck):
         return self.__nenner
 
     def __str__(self) -> str:
-        return str(self.zaehler) + "/" + str(self.nenner)
+        return "(" + str(self.zaehler) + "," + str(self.nenner) + ")"
 
     def __eq__(self, obj: Any) -> bool:
         if isinstance(obj, Bruch):
