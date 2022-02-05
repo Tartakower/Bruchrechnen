@@ -11,11 +11,11 @@ class TemporaererAusdruck(Ausdruck):
 
 class AdditionBruch(TemporaererAusdruck):
     
-    def __init__(self, op_1: int, op_2: int, nenner: int) -> None:
+    def __init__(self, operator: Operator, op_1: int, op_2: int, nenner: int) -> None:
         if nenner == 0:
             raise ZeroDivisionError
         faktor = 1 if (nenner > 0) else -1
-        self.__zaehler = Grundrechnen(Operator.PLUS, op_1 * faktor, op_2 * faktor)
+        self.__zaehler = Grundrechnen(operator, op_1 * faktor, op_2 * faktor)
         self.__nenner = nenner * faktor
 
     @property
@@ -27,7 +27,7 @@ class AdditionBruch(TemporaererAusdruck):
         return self.__nenner
     
     def __str__(self) -> str:
-        return str(self.zaehler) + " / " + str(self.nenner)
+        return "(" + str(self.zaehler) + "," + str(self.nenner) + ")"
     
     def berechneBruch(self) -> Bruch:
         return Bruch(self.zaehler.berechne(), self.nenner)

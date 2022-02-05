@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from typing import Any
-from Ausdruck import UnaererAusdruck
+from typing import Any, List
+from Ausdruck import Ausdruck, UnaererAusdruck
 from MathUtilities import ggT
 
 """ """
@@ -45,10 +45,27 @@ class Bruch(UnaererAusdruck):
     def kuerze(self) -> Bruch:
         ggt = ggT(self.zaehler, self.nenner)
         return Bruch(self.zaehler // ggt, self.nenner // ggt)
+
+    def kehrwert(self) -> Bruch:
+        return Bruch(self.nenner, self.zaehler)
     
     def berechneGemischteZahl(self) -> GemischteZahl:
         b = self.kuerze()
         return GemischteZahl(b.zaehler // b.nenner, Bruch(b.zaehler % b.nenner, b.nenner))
+
+    def berechne(self) -> List[Ausdruck]:
+        berechnung: List[Ausdruck] = [self]
+        bruch: Bruch
+        if self.istGekuerzt():
+            bruch = self
+        else:
+            bruch = self.kuerze()
+            berechnung.append(bruch)
+        if not bruch.istEchterBruch():
+            gemischteZahl: GemischteZahl = bruch.berechneGemischteZahl()
+            berechnung.append(gemischteZahl)
+        berechnung.append(bruch.berechneDezimalzahl())
+        return berechnung
 
 """ """
 class GemischteZahl(UnaererAusdruck):

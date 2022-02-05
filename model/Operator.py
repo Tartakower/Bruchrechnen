@@ -6,7 +6,7 @@ class Operator(Enum):
     PLUS = "+"
     MINUS = "-"
     MULT = "*"
-    DIV = "/"
+    DIV = ":"
 
     def __str__(self) -> str:
         return self.value
