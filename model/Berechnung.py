@@ -3,12 +3,18 @@
 from Ausdruck import Ausdruck
 from typing import List
 
+from BerechnungAusdruck import BerechnungAusdruck
+
 
 class Berechnung(object):
 
     def __init__(self, ausdruck: Ausdruck) -> None:
         self.__ausdruck = ausdruck
         self.__berechnung: List[Ausdruck] = []
+
+    @property
+    def ausdruck(self) -> Ausdruck:
+        return self.__ausdruck
 
     @property
     def berechnung(self) -> List[Ausdruck]:
@@ -27,14 +33,12 @@ class Berechnung(object):
             result += " = " + str(self.__berechnung[index])
         return result
 
-    def getStart(self) -> Ausdruck:
-        return self.__ausdruck
-
     def istBerechnungErfolgt(self) -> bool:
-        return self.__berechnung is True
+        return bool(self.__berechnung)
 
     def berechne(self) -> List[Ausdruck]:
-        return self.__ausdruck.berechne()
+        berechnung: BerechnungAusdruck = self.__ausdruck.erzeugeBerechnung()
+        return berechnung.berechne()
 
     def mathML(self) -> str:
         return ""

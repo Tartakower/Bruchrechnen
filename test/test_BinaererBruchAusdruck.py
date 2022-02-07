@@ -1,7 +1,7 @@
 """  """
 
 from Berechnung import Berechnung
-from BinaererAusdruck import Addition, Division, Multiplikation
+from BinaererAusdruck import Addition, Division, Multiplikation, Subtraktion
 from UnaererAusdruck import Bruch
 
 
@@ -27,5 +27,11 @@ def test_addition() -> None:
     bruch_2: Bruch = Bruch(2,5)
     summe: Addition = Addition(bruch_1, bruch_2)
     berechnung = Berechnung(summe)
-
     assert "(1,2) + (2,5) = (1 * 5,2 * 5) + (2 * 2,5 * 2) = (5 + 4,10) = (9,10) = 0.9" == berechnung.schreibeBerechnung()
+
+def test_subtraktion() -> None:
+    bruch_1: Bruch = Bruch(1,2)
+    bruch_2: Bruch = Bruch(2,5)
+    summe: Subtraktion = Subtraktion(bruch_1, bruch_2)
+    berechnung = Berechnung(summe)
+    assert "(1,2) - (2,5) = (1 * 5,2 * 5) - (2 * 2,5 * 2) = (5 - 4,10) = (1,10) = 0.1" == berechnung.schreibeBerechnung()

@@ -1,4 +1,5 @@
 
+# from TemporaererAusdruck import MultBruch
 from UnaererAusdruck import Bruch, GemischteZahl
 
 import pytest
@@ -32,5 +33,5 @@ def test_istGekuerzt() -> None:
 def test_kuerze() -> None:
     assert Bruch(1,3) == Bruch(17, 51).kuerze()
     
-def test_BerechneGemischteZahl() -> None:
+def test_berechneGemischteZahl() -> None:
     assert GemischteZahl(5, Bruch(5,6)) == Bruch(70,12).berechneGemischteZahl()

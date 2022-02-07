@@ -5,7 +5,7 @@ from Ausdruck import Ausdruck, BinaererAusdruck
 from Berechnung import Berechnung
 from MathUtilities import kgV
 from Operator import Operator
-from TemporaererAusdruck import AdditionBruch, MultBruch
+from TemporaererAusdruck import MultBruch, SummenBruch
 from UnaererAusdruck import Bruch
 
 class BinaererBruchAusdruck(BinaererAusdruck):
@@ -19,11 +19,11 @@ class BinaererBruchAusdruck(BinaererAusdruck):
     def getOperand_2(self) -> Bruch:
         return cast(Bruch, self.operand_2)
 
-class Addition(BinaererBruchAusdruck):
+class Summe(BinaererBruchAusdruck):
 
-    def __init__(self, summand_1: Bruch, summand_2: Bruch) -> None:
-        super().__init__(Operator.PLUS, summand_1, summand_2)
-   
+    def __init__(self, operator: Operator, summand_1: Bruch, summand_2: Bruch) -> None:
+        super().__init__(operator, summand_1, summand_2)
+
     def berechne(self) -> List[Ausdruck]:
         berechnung: List[Ausdruck] = [self]
         bruch_1: Bruch = self.getOperand_1()
@@ -33,14 +33,19 @@ class Addition(BinaererBruchAusdruck):
         faktor_2 = hauptnenner // bruch_2.nenner
         summand_1: MultBruch = MultBruch(bruch_1.zaehler, bruch_1.nenner, faktor_1, faktor_1)
         summand_2: MultBruch = MultBruch(bruch_2.zaehler, bruch_2.nenner, faktor_2, faktor_2)
-        ausdruck = BinaererAusdruck(Operator.PLUS, summand_1, summand_2)
+        ausdruck = BinaererAusdruck(self.operator, summand_1, summand_2)
         berechnung.append(ausdruck)
-        sumBruch: AdditionBruch = AdditionBruch(Operator.PLUS, bruch_1.zaehler * faktor_1, bruch_2.zaehler * faktor_2, hauptnenner)
+        sumBruch: SummenBruch = SummenBruch(self.operator, bruch_1.zaehler * faktor_1, bruch_2.zaehler * faktor_2, hauptnenner)
         berechnung.append(sumBruch)
         berechnung.extend(Berechnung(sumBruch.berechneBruch()).berechne())
         return berechnung
 
-class Subtraktion(BinaererBruchAusdruck):
+class Addition(Summe):
+
+    def __init__(self, summand_1: Bruch, summand_2: Bruch) -> None:
+        super().__init__(Operator.PLUS, summand_1, summand_2)
+   
+class Subtraktion(Summe):
 
     def __init__(self, summand_1: Bruch, summand_2: Bruch) -> None:
         super().__init__(Operator.MINUS, summand_1, summand_2)

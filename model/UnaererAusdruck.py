@@ -1,8 +1,11 @@
 from __future__ import annotations
 
-from typing import Any, List
+from typing import TYPE_CHECKING, Any, List
 from Ausdruck import Ausdruck, UnaererAusdruck
 from MathUtilities import ggT
+
+if TYPE_CHECKING:
+    from BerechnungAusdruck import BerechnungBruch, BerechnungGemischteZahl, BerechnungDezimalZahl
 
 """ """
 class Bruch(UnaererAusdruck):
@@ -53,19 +56,9 @@ class Bruch(UnaererAusdruck):
         b = self.kuerze()
         return GemischteZahl(b.zaehler // b.nenner, Bruch(b.zaehler % b.nenner, b.nenner))
 
-    def berechne(self) -> List[Ausdruck]:
-        berechnung: List[Ausdruck] = [self]
-        bruch: Bruch
-        if self.istGekuerzt():
-            bruch = self
-        else:
-            bruch = self.kuerze()
-            berechnung.append(bruch)
-        if not bruch.istEchterBruch():
-            gemischteZahl: GemischteZahl = bruch.berechneGemischteZahl()
-            berechnung.append(gemischteZahl)
-        berechnung.append(bruch.berechneDezimalzahl())
-        return berechnung
+    def erzeugeBerechnung(self) -> BerechnungBruch:
+        from BerechnungAusdruck import BerechnungBruch
+        return BerechnungBruch(self)
 
 """ """
 class GemischteZahl(UnaererAusdruck):
@@ -90,19 +83,45 @@ class GemischteZahl(UnaererAusdruck):
     def __str__(self) -> str:
         return str(self.ganzzahl) + " " + str(self.bruch)
     
-    def berechneDezimalzahl(self) -> DezimalZahl:
-        return DezimalZahl(self.ganzzahl + self.bruch.berechneWert())
-    
-    def istGekuerzt(self) -> bool:
-        return self.bruch.istEchterBruch() and self.bruch.istGekuerzt()
-    
     def berechneBruch(self) -> Bruch:
         return Bruch(self.ganzzahl * self.bruch.nenner + self.bruch.zaehler, self.bruch.nenner)
+
+    def berechneDezimalzahl(self) -> DezimalZahl:
+        return DezimalZahl(self.ganzzahl + self.bruch.berechneWert())
+
+    def istEcht(self) -> bool:
+        return self.bruch.istEchterBruch()
     
+    def istGekuerzt(self) -> bool:
+        return self.bruch.istGekuerzt()
+    
+    def istNormiert(self) -> bool:
+        return self.istEcht() and self.istGekuerzt()
+
+    def extrahiereGanzzahl(self) -> GemischteZahl:
+        if self.istEcht():
+            return self
+        zaehler: int = self.bruch.zaehler
+        nenner: int = self.bruch.nenner
+        return GemischteZahl(self.ganzzahl + zaehler // nenner, Bruch(zaehler % nenner, nenner))
+
     def kuerze(self) -> GemischteZahl:
         if self.istGekuerzt():
             return self
         return self.berechneBruch().berechneGemischteZahl()
+
+    def normiere(self) -> GemischteZahl:
+        normierteZahl = self
+        if not self.istEcht():
+            normierteZahl = self.extrahiereGanzzahl()
+        if not normierteZahl.istGekuerzt():
+            normierteZahl = normierteZahl.kuerze()
+        return normierteZahl
+
+    def erzeugeBerechnung(self) -> BerechnungGemischteZahl:
+        from BerechnungAusdruck import BerechnungGemischteZahl
+        return BerechnungGemischteZahl(self)
+
 
 """  """
 class DezimalZahl(UnaererAusdruck):
@@ -116,4 +135,18 @@ class DezimalZahl(UnaererAusdruck):
 
     def __str__(self) -> str:
         return str(self.zahl)
+
+    def berechneBruch(self, gekuerzt: bool) -> Bruch:
+        nachkommastellen: str = str(self.zahl).partition(".")[2]
+        anzahl: int = len(nachkommastellen)
+        nenner: int = pow(10,anzahl)
+        bruch: Bruch = Bruch(int(self.zahl * nenner), nenner)
+        return bruch.kuerze() if gekuerzt else bruch
+
+    def berechneGemischteZahl(self) -> GemischteZahl:
+        return self.berechneBruch(True).berechneGemischteZahl()
+
+    def erzeugeBerechnung(self) -> BerechnungDezimalZahl:
+        from BerechnungAusdruck import BerechnungDezimalZahl
+        return BerechnungDezimalZahl(self)
     

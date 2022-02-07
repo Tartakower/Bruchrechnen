@@ -9,7 +9,7 @@ from UnaererAusdruck import Bruch
 class TemporaererAusdruck(Ausdruck):
     pass
 
-class AdditionBruch(TemporaererAusdruck):
+class SummenBruch(TemporaererAusdruck):
     
     def __init__(self, operator: Operator, op_1: int, op_2: int, nenner: int) -> None:
         if nenner == 0:
@@ -62,6 +62,11 @@ class MultBruch(TemporaererAusdruck):
 
     def berechneBruch(self) -> Bruch:
         return Bruch(self.__z1 * self.__z2, self.__n1 * self.__n2)
+
+    @staticmethod
+    def erzeugeErweiterung(bruch: Bruch) -> MultBruch:
+        faktor: int = MathUtilities.ggT(bruch.zaehler, bruch.nenner)
+        return MultBruch(bruch.zaehler // faktor, bruch.nenner // faktor, faktor, faktor)
 
     @staticmethod
     def erzeugeMultBruch(bruch_1: Bruch, bruch_2: Bruch):
