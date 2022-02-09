@@ -1,18 +1,10 @@
 """  """
 from __future__ import annotations
-from abc import abstractmethod
-from typing import TYPE_CHECKING, List
 from Operator import Operator
 
-if TYPE_CHECKING:
-    from BerechnungAusdruck import BerechnungAusdruck
-
 class Ausdruck(object):
-
-    @abstractmethod
-    def erzeugeBerechnung(self) -> BerechnungAusdruck:
-        pass
-
+    pass
+ 
 class UnaererAusdruck(Ausdruck):
     pass
 
