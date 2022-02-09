@@ -2,8 +2,8 @@
 
 from Ausdruck import Ausdruck
 from typing import List
-
 from BerechnungAusdruck import BerechnungAusdruck
+from BerechnungsFactory import BerechnungsFactory
 
 
 class Berechnung(object):
@@ -37,8 +37,8 @@ class Berechnung(object):
         return bool(self.__berechnung)
 
     def berechne(self) -> List[Ausdruck]:
-        berechnung: BerechnungAusdruck = self.__ausdruck.erzeugeBerechnung()
-        return berechnung.berechne()
+        berechnungAusdruck: BerechnungAusdruck = BerechnungsFactory.erzeugeBerechungAusdruck(self.__ausdruck)
+        return berechnungAusdruck.berechne()
 
     def mathML(self) -> str:
         return ""

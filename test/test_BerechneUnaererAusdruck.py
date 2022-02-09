@@ -22,6 +22,6 @@ def test_berechneGemischteZahl() -> None:
     gemischteZahl: GemischteZahl = GemischteZahl(2, Bruch(12,8))
     assert "2 (12,8) = 3 (4,8) = 3 (1,2) = (7,2) = 3.5" == Berechnung(gemischteZahl).schreibeBerechnung()
 
-def test_berechneDezimalZahl():
+def test_berechneDezimalZahl() -> None:
     dezimalZahl: DezimalZahl = DezimalZahl(1.25)
     assert "1.25 = (125,100) = (5 * 25,4 * 25) = (5,4) = 1 (1,4)" == Berechnung(dezimalZahl).schreibeBerechnung()

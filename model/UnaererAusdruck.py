@@ -1,11 +1,8 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, List
-from Ausdruck import Ausdruck, UnaererAusdruck
+from typing import Any
+from Ausdruck import UnaererAusdruck
 from MathUtilities import ggT
-
-if TYPE_CHECKING:
-    from BerechnungAusdruck import BerechnungBruch, BerechnungGemischteZahl, BerechnungDezimalZahl
 
 """ """
 class Bruch(UnaererAusdruck):
@@ -55,10 +52,6 @@ class Bruch(UnaererAusdruck):
     def berechneGemischteZahl(self) -> GemischteZahl:
         b = self.kuerze()
         return GemischteZahl(b.zaehler // b.nenner, Bruch(b.zaehler % b.nenner, b.nenner))
-
-    def erzeugeBerechnung(self) -> BerechnungBruch:
-        from BerechnungAusdruck import BerechnungBruch
-        return BerechnungBruch(self)
 
 """ """
 class GemischteZahl(UnaererAusdruck):
@@ -118,11 +111,6 @@ class GemischteZahl(UnaererAusdruck):
             normierteZahl = normierteZahl.kuerze()
         return normierteZahl
 
-    def erzeugeBerechnung(self) -> BerechnungGemischteZahl:
-        from BerechnungAusdruck import BerechnungGemischteZahl
-        return BerechnungGemischteZahl(self)
-
-
 """  """
 class DezimalZahl(UnaererAusdruck):
 
@@ -144,9 +132,4 @@ class DezimalZahl(UnaererAusdruck):
         return bruch.kuerze() if gekuerzt else bruch
 
     def berechneGemischteZahl(self) -> GemischteZahl:
-        return self.berechneBruch(True).berechneGemischteZahl()
-
-    def erzeugeBerechnung(self) -> BerechnungDezimalZahl:
-        from BerechnungAusdruck import BerechnungDezimalZahl
-        return BerechnungDezimalZahl(self)
-    
+        return self.berechneBruch(True).berechneGemischteZahl()    
