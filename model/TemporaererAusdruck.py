@@ -43,11 +43,11 @@ class MultBruch(TemporaererAusdruck):
     def __str__(self) -> str:
         return "(" + str(Grundrechnen(Operator.MULT, self.__z1, self.__z2)) + "," + str(Grundrechnen(Operator.MULT, self.__n1, self.__n2)) + ")"
 
-    def ist_direkt_gekuerzt(self):
+    def ist_direkt_gekuerzt(self) -> bool:
         return MathUtilities.ggT(self.__z1, self.__n1) == 1 and MathUtilities.ggT(self.__z2, self.__n2) == 1
 
-    def ist_kreuz_gekuerzt(self):
-        MathUtilities.ggT(self.__z1, self.__n2) == 1 and MathUtilities.ggT(self.__z2, self.__n1) == 1
+    def ist_kreuz_gekuerzt(self) -> bool:
+        return MathUtilities.ggT(self.__z1, self.__n2) == 1 and MathUtilities.ggT(self.__z2, self.__n1) == 1
     
     def direkt_kuerzen(self) -> MultBruch:
         ggt_1 = MathUtilities.ggT(self.__z1, self.__n1)
@@ -69,5 +69,5 @@ class MultBruch(TemporaererAusdruck):
         return MultBruch(bruch.zaehler // faktor, bruch.nenner // faktor, faktor, faktor)
 
     @staticmethod
-    def erzeugeMultBruch(bruch_1: Bruch, bruch_2: Bruch):
+    def erzeugeMultBruch(bruch_1: Bruch, bruch_2: Bruch) -> MultBruch:
         return MultBruch(bruch_1.zaehler, bruch_1.nenner, bruch_2.zaehler, bruch_2.nenner)
