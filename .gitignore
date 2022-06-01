@@ -109,9 +109,11 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.code-workspace
 .vscode/
 .project
 .pydevproject
+.replit
 
 # Spyder project settings
 .spyderproject
@@ -136,3 +138,6 @@ zzz/
 
 # Automatisch generierte HTML-Datei
 index.html
+
+# Dummy-Datei wegen Unittest-Import
+main.py
