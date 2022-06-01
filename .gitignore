@@ -130,3 +130,6 @@ dmypy.json
 
 # Zusätzliche Ordner
 zzz/
+
+# Automatisch generierte HTML-Datei
+index.html
