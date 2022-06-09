@@ -1,0 +1,50 @@
+% Listings Styles
+
+\definecolor{darkred}{rgb}{0.8,0,0}
+\definecolor{darkgreen}{rgb}{0.0,0.5,0}
+
+\lstdefinestyle{syntaxZeile}{
+	language=python, 				        		
+	basicstyle=\ttfamily,
+	keywordstyle=\color{darkred}\bfseries,	
+	identifierstyle=\color{blue},				
+	commentstyle=\color{darkgreen},			
+	stringstyle=\ttfamily\color{darkgreen}, 			    		
+	showstringspaces=false,	        		
+	numbers=none, 	        			
+	frame=none, 				        		
+	tabsize=2,				            		
+	float=htbp,
+	captionpos=b}
+
+\lstdefinestyle{syntaxPython}{
+	language=python, 				        		
+	basicstyle=\linespread{1.2}\ttfamily,
+	keywordstyle=\color{darkred}\bfseries,	
+	identifierstyle=\color{blue},				
+	commentstyle=\color{darkgreen},			
+	stringstyle=\ttfamily\color{darkgreen}, 			    		
+	showstringspaces=false,
+	breaklines=true, 			        		
+	numbers=left, 				        		
+	numberstyle=\small,		        			
+	frame=single, 				        		
+	tabsize=2,				            		
+	float=htbp,
+	captionpos=b,
+	aboveskip=2ex,
+	belowskip=\medskipamount,
+	xleftmargin=.06\textwidth}
+
+\lstset{literate=%
+	{Ö}{{\"O}}1
+	{Ä}{{\"A}}1
+	{Ü}{{\"U}}1
+	{ß}{{\ss}}2
+	{ü}{{\"u}}1
+	{ä}{{\"a}}1
+	{ö}{{\"o}}1
+}
+
+\lstnewenvironment{codeAufgabe}[1]{\lstset{style=syntaxPython,caption=#1}}{}
+\lstnewenvironment{codeBeispiel}[2]{\lstset{style=syntaxPython,caption=#1,label=#2}}{}

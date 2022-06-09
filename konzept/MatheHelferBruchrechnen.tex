@@ -1,0 +1,73 @@
+\documentclass[12pt,open=any,numbers=noendperiod,DIV=15]{scrartcl}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Schriftart DejaVu
+\usepackage{dejavu}
+\usepackage[onehalfspacing]{setspace}
+%\setstretch{1.5}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus0.5ex minus0.5ex}
+
+\usepackage{enumitem}
+\setlist{noitemsep,topsep=0pt}
+
+% Kopf- und Fußzeile
+\pagestyle{headings}
+%\usepackage[singlespacing=true]{scrlayer-scrpage}
+%\ifoot{\copyright~Norbert Seulberger, 2021}
+%\cfoot{}
+%\ofoot{\pagemark}
+%\pagestyle{scrheadings}
+%\pagestyle{plain.scrheadings}
+%\setkomafont{pageheadfoot}{\small}
+
+% Koma-Script für Inhaltsverzeichnis
+\usepackage{tocbasic}
+\DeclareTOCStyleEntries[dynnumwidth=true]{tocline}{chapter,section,subsection}
+
+\usepackage{color}
+\usepackage{listings}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage{eurosym}
+\usepackage{scrhack}
+\usepackage{csquotes,xpatch}
+%\usepackage[top=20mm,left=20mm,right=20mm,bottom=30mm]{geometry}
+\mathindent=2em
+
+%\usepackage{tikz}
+%\usetikzlibrary{shapes.geometric, arrows}
+
+\sloppy
+
+\input{Umgebungen}
+\input{ListingsStyles}
+%\input{listings-python.prf}
+%\input{TikzStyles}
+
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+
+%\listfiles % Gibt die Versionsnummern der geladenen Pakete in der log-Datei aus.
+
+\begin{document}
+
+%\tableofcontents
+
+\include{./Kapitel/Aufgabenstellung}
+
+\include{./Kapitel/Algorithmen}
+
+%\section{Die fachlichen Themen}
+\include{./Kapitel/Funktionen}
+\include{./Kapitel/Bedingungen}
+\include{./Kapitel/Schleifen}
+
+\include{./Kapitel/MathML}
+\include{./Kapitel/HTMLDatei}
+
+
+\end{document}
