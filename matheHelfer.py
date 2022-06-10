@@ -1,15 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass
 
+@dataclass(frozen=True)
 class Bruch():
 
-    def __init__(self, zaehler: int, nenner: int):
-        self.zaehler = zaehler
-        self.nenner = nenner
+    zaehler: int
+    nenner: int
 
+    def __str__(self: Bruch) -> str:
+        return "Zähler: " + str(self.zaehler) + ", Nenner: " + str(self.nenner)
+
+@dataclass(frozen=True)
 class Dezimalzahl():
 
-    def __init__(self, zahl: float):
-        self.zahl = zahl
+    kommazahl: float
+
+    def __str__(self: Bruch) -> str:
+        return "Kommazahl: " + str(self.kommazahl)
 
 # Ende der Klassendefinitionen
 
@@ -38,11 +45,11 @@ def wandleBruchZuDezimalzahl(bruch: Bruch) -> Dezimalzahl:
     return Dezimalzahl(wert)
 
 def berecheDezimalzahlWert(dezimalzahl: Dezimalzahl) -> float:
-    ergebnis = dezimalzahl.zahl
+    ergebnis = dezimalzahl.kommazahl
     return ergebnis
 
 def wandleDezimalzahlZuBruch(dezimalzahl: Dezimalzahl) -> Bruch:
-    dezimalwert = dezimalzahl.zahl
+    dezimalwert = dezimalzahl.kommazahl
     zahlAlsString = str(dezimalwert)
     nachkommastellen: str = zahlAlsString.partition(".")[2]
     anzahlNachkommastellen = len(nachkommastellen)
@@ -60,7 +67,7 @@ def schreibeBruch(bruch: Bruch) -> str:
     return ergebnis
 
 def schreibeDezimalzahl(dezimalzahl: Dezimalzahl) -> str:
-    dezimalwert = dezimalzahl.zahl
+    dezimalwert = dezimalzahl.kommazahl
     zahlAlsString = str(dezimalwert)
     return "<mn>" + zahlAlsString + "</mn>"
 
