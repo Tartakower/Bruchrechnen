@@ -15,7 +15,7 @@ class Dezimalzahl():
 
     kommazahl: float
 
-    def __str__(self: Bruch) -> str:
+    def __str__(self: Dezimalzahl) -> str:
         return "Kommazahl: " + str(self.kommazahl)
 
 # Ende der Klassendefinitionen
