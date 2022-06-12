@@ -1,0 +1,58 @@
+\section{Aufgabenblatt MathML}
+
+\subsection{Aufgabe: Anzeige der HTML-Datei}
+
+Schau dir im Firefox-Browser die Datei \texttt{manuell.html} an. Die Anzeige sollte etwa so aussehen:
+
+\begin{equation*}
+\frac{6}{8} = \frac{3}{4}
+\end{equation*}
+
+Hier kannst du die Formeln für das Umrechnen eines Bruchs in eine Dezimalzahl und umgekehrt einfügen.
+
+\subsection{Aufgabe: Ansicht der HTML-Datei im Editor}
+
+Schau dir jetzt dieselbe Datei im Editor der Entwicklungsumgebung an. Der Text sieht etwa so aus:
+
+\begin{codeHTML}{Die Datei manuell.html}
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Bruchrechnen</title>
+	</head>
+	<body>
+		<p>
+			<math>
+				<mfrac>
+					<mi>6</mi>
+					<mi>8</mi>
+				</mfrac>
+				<mo>=</mo>
+				<mfrac>
+					<mi>3</mi>
+					<mi>4</mi>
+				</mfrac>
+			</math>
+		</p>
+		<p>
+ 			Hier kannst du die Formeln für das Umrechnen ...
+		</p>
+	</body>
+</html>
+\end{codeHTML}
+
+Kannst du die Element entdecken, die für die Darstellung des Kürzens der beiden Brüche stehen?
+
+\subsection{Aufgabe: Die Beschreibung der beiden Umrechungen}
+
+Füge in die Datei \texttt{manuell.html} den Text in der MathML-Sprache ein, so dass die beiden Umrechungen dargestellt werden (zusätzlich zur Formel für das Kürzen). Der Text „Hier kannst du \dots“ darf überschrieben werden.
+
+\begin{align*}
+& \frac{6}{8} = \frac{3}{4} & \\[2ex]
+& \frac{3}{4} = 0.75 & \\[2ex]
+& 0.8 = \frac{4}{5} & 
+\end{align*}
+
+Überprüfe das Ergebnis im Firefox-Browser.

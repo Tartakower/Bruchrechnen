@@ -109,7 +109,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-.code-workspace
+*.code-workspace
 .vscode/
 .project
 .pydevproject
@@ -141,3 +141,9 @@ index.html
 
 # Dummy-Datei wegen Unittest-Import
 main.py
+
+## Latex-Dateien
+*.aux
+*.out
+*.toc
+*.synctex.gz

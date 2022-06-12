@@ -1,4 +1,4 @@
-\documentclass[12pt,open=any,numbers=noendperiod,DIV=15]{scrartcl}
+\documentclass[12p,numbers=noendperiod,DIV=15]{scrartcl}
 
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
@@ -16,26 +16,24 @@
 \setlist{noitemsep,topsep=0pt}
 
 % Kopf- und Fußzeile
-\pagestyle{headings}
+%\pagestyle{headings}
 %\usepackage[singlespacing=true]{scrlayer-scrpage}
 %\ifoot{\copyright~Norbert Seulberger, 2021}
 %\cfoot{}
 %\ofoot{\pagemark}
 %\pagestyle{scrheadings}
-%\pagestyle{plain.scrheadings}
+\pagestyle{plain}
 %\setkomafont{pageheadfoot}{\small}
 
 % Koma-Script für Inhaltsverzeichnis
 \usepackage{tocbasic}
-\DeclareTOCStyleEntries[dynnumwidth=true]{tocline}{chapter,section,subsection}
+%\DeclareTOCStyleEntries[dynnumwidth=true]{tocline}{chapter,section,subsection}
 
 \usepackage{color}
 \usepackage{listings}
 \usepackage[fleqn]{amsmath}
-\usepackage{amssymb}
-\usepackage{eurosym}
+%\usepackage{eurosym}
 \usepackage{scrhack}
-\usepackage{csquotes,xpatch}
 %\usepackage[top=20mm,left=20mm,right=20mm,bottom=30mm]{geometry}
 \mathindent=2em
 
@@ -54,8 +52,15 @@
 %\listfiles % Gibt die Versionsnummern der geladenen Pakete in der log-Datei aus.
 
 \begin{document}
+	
+\title{Mathehelfer Bruchrechnen}
+\subtitle{Ein Hackathon für Kinder und Jugendliche}
+\author{Norbert Seulberger, Dataport AöR}
+\date{September 2022}
 
-%\tableofcontents
+\maketitle[-1]
+
+\tableofcontents
 
 \include{./Kapitel/Aufgabenstellung}
 
@@ -63,11 +68,13 @@
 
 %\section{Die fachlichen Themen}
 \include{./Kapitel/Funktionen}
-\include{./Kapitel/Bedingungen}
-\include{./Kapitel/Schleifen}
+%\include{./Kapitel/Bedingungen}
+%\include{./Kapitel/Schleifen}
 
 \include{./Kapitel/MathML}
-\include{./Kapitel/HTMLDatei}
+%\include{./Kapitel/HTMLDatei}
+
+\include{./Kapitel/AufgabeMathML}
 
 
 \end{document}
