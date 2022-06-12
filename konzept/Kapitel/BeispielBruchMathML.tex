@@ -1,0 +1,21 @@
+\section{Beispiel: Die Darstellung eines Bruches in MathML}
+
+Lies dieses Beispiel sorgfältig durch. Es dient als Vorlage für die Aufgaben, die du danach selbstständig lösen sollst.
+
+\subsection{Der Algorithmus}
+
+Einen Bruch in MathML zu schreiben, ist nicht schwierig, aber mühsam. Daher möchten wir eine Funktion ein Python programmieren, die das automatisch erledigt. Der Algorithmus lautet so:
+\begin{itemize}
+	\item Nimm einen Bruch entgegen.
+	\item Wandle den Zähler des Bruchs in eine Zeichenkette.
+	\item Wandle den Nenner des Bruchs in eine Zeichenkette.
+	\item Gib der Zeichenkette, die den Bruch in MathML beschreibt, einen Namen.
+	\item Baue die Zeichenketteaus Einzelteilen zusammen.
+	\item Beginne die Zeichenkette mit \texttt{<mfrac>}.
+	\item Rahme die Zeichenkette, die den Zähler beschreibt, mit den Tags \texttt{<mi>} und \texttt{</mi>} ein.
+	\item Verfahre ebenso mit der Zeichenkette für den Nenner.
+	\item Beende die Zeichenkette mit \texttt{</mfrac>}.
+	\item Gib die Zeichenkette zurück.
+\end{itemize}
+
+\subsection{Die Funktion}
