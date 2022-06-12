@@ -43,23 +43,12 @@
 	identifierstyle=\color{blue},%	
 	stringstyle=\color{darkgreen},%
 	tabsize=2,%
-	showstringspaces=false} 				        		
-%	basicstyle=\linespread{1.2}\ttfamily,
-%	keywordstyle=\color{darkred}\bfseries,	
-%	identifierstyle=\color{blue},				
-%	commentstyle=\color{darkgreen},			
-%	stringstyle=\ttfamily\color{darkgreen}, 			    		
-%	showstringspaces=false,
-%	breaklines=true, 			        		
-%	numbers=left, 				        		
-%	numberstyle=\small,		        			
-%	frame=single, 				        		
-%	tabsize=2,				            		
-%	float=htbp,
-%	captionpos=b,
-%	aboveskip=2ex,
-%	belowskip=\medskipamount,
-%	xleftmargin=.06\textwidth}
+	showstringspaces=false,%
+	numbers=left,%			        		
+	numberstyle=\small,		        			
+	frame=single,
+	captionpos=b 
+} 
 
 \lstset{literate=%
 	{Ö}{{\"O}}1
@@ -71,6 +60,5 @@
 	{ö}{{\"o}}1
 }
 
-\lstnewenvironment{codeAufgabe}[1]{\lstset{style=syntaxPython,caption=#1}}{}
-\lstnewenvironment{codePython}[2]{\lstset{style=syntaxPython,caption=#1,label=#2}}{}
+\lstnewenvironment{codePython}[1]{\lstset{style=syntaxPython,caption=#1}}{}
 \lstnewenvironment{codeHTML}[1]{\lstset{style=syntaxHTML,caption=#1}}{}

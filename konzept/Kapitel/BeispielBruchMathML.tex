@@ -19,3 +19,33 @@ Einen Bruch in MathML zu schreiben, ist nicht schwierig, aber mühsam. Daher mö
 \end{itemize}
 
 \subsection{Die Funktion}
+
+Die Funktion sieht dann so aus:
+
+\begin{codePython}{Darstellung eines Bruchs in MathML}
+def schreibeBruch(bruch: Bruch) -> str:
+	zaehlerAlsString = str(bruch.zaehler)
+	nennerAlsString = str(bruch.nenner)
+	ergebnis = "<mfrac>"
+	ergebnis += "<mi>" + zaehlerAlsString + "</mi>"
+	ergebnis += "<mi>" + nennerAlsString + "</mi>"
+	ergebnis += "</mfrac>"
+	return ergebnis
+\end{codePython}
+
+\subsection{Das Überprüfen des Ergebnisses}
+
+In der Funktion \texttt{schreibeMathML()} ergänzen wir nun die Zeilen für die Darstellung des Bruchs.
+
+\begin{codePython}{Schreibe die HTML-Datei}
+def schreibeMathML() -> str:
+	inhalt = "<p><math><mi>2</mi><mo>+</mo><mi>3</mi>"
+				+ "<mo>=</mo><mi>5</mi></math></p>"
+	bruch: Bruch = Bruch(3,4)
+	inhalt += "\n\t\t<p>"
+	inhalt += "<math>" + schreibeBruch(bruch) + "</math>"
+	inhalt += "</p>"
+	return inhalt
+\end{codePython}
+
+Danach führen wir die Python-Datei \texttt{htmlErzeugung.py} aus und betrachten im Firefox-Browser die Datei \texttt{index.html}

@@ -70,7 +70,10 @@ def wandleDezimalzahlZuBruch(dezimalzahl: Dezimalzahl) -> Bruch:
 def schreibeBruch(bruch: Bruch) -> str:
     zaehlerAlsString = str(bruch.zaehler)
     nennerAlsString = str(bruch.nenner)
-    ergebnis = "<mfrac><mi>" + zaehlerAlsString + "</mi><mi>" + nennerAlsString + "</mi></mfrac>"
+    ergebnis = "<mfrac>"
+    ergebnis += "<mi>" + zaehlerAlsString + "</mi>"
+    ergebnis += "<mi>" + nennerAlsString + "</mi>"
+    ergebnis += "</mfrac>"
     return ergebnis
 
 def schreibeDezimalzahl(dezimalzahl: Dezimalzahl) -> str:
@@ -99,11 +102,16 @@ def vonDezimalzahlZuBruch(dezimalzahl: Dezimalzahl) -> str:
 # In dieser Funktion darf ausprobiert werden.
 
 def schreibeMathML() -> str:
-    bruchUngekuerzt: Bruch = Bruch(6,8)
+    inhalt = "<p><math><mi>2</mi><mo>+</mo><mi>3</mi><mo>=</mo><mi>5</mi></math></p>"
     bruch: Bruch = Bruch(3,4)
-    inhalt = "<p>" 
+    inhalt += "\n\t\t<p>"
+    inhalt += "<math>" + schreibeBruch(bruch) + "</math>"
+    inhalt += "</p>"
+    bruchUngekuerzt: Bruch = Bruch(6,8)
+    inhalt += "\n\t\t<p>"
     inhalt += schreibeKuerzen(bruchUngekuerzt)
-    inhalt += "</p>\n\t\t<p>"
+    inhalt += "</p>"
+    inhalt += "\n\t\t<p>"
     inhalt += vonBruchZuDezimalzahl(bruch)
     inhalt += "</p>\n\t\t<p>"
     inhalt += vonDezimalzahlZuBruch(Dezimalzahl(0.25))
