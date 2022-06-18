@@ -1,3 +1,47 @@
 \section{MathML}
 
-MathML ist eine einfache Markup-Sprache, die in HTML-Dokumenten dazu verwendet werden kann, um mathematische Formeln darzustellen.
+MathML ist eine einfache Markup-Sprache, die in einem HTML-Dokument dazu verwendet werden kann, um mathematische Formeln darzustellen.
+
+Genauso wie in HTML werden die Daten in sogenannte Tags eingeschlossen, d.h. ein Element beginnt mit einen Tag, dann stehen die Daten und ein schließendes Tag beendet den Ausdruck. 
+
+\subsection{Operanden und Operatoren}
+
+Für die verschiedenen Teile einer mathematischen Formel gibt es unterschiedliche Elemente.
+\begin{itemize}
+	\item \texttt{<mn>}42\texttt{</mn>} stellt die Zahl 42 dar.
+	\item \texttt{<mo>}=\texttt{</mo>} beschreibt ein Gleichheitszeichen.
+	\item \texttt{<mo>}+\texttt{</mo>} schreibt ein Pluszeichen.
+\end{itemize}
+
+Die Formel $2 + 3 = 5$ lautet also in MathML:
+\begin{codeHTML}{Eine einfache Addition}
+<mn>2</mn>
+<mo>+</mo>
+<mn>3</mn>
+<mo>=</mo>
+<mn>5</mn>
+\end{codeHTML}
+
+\nurTitel{Tipp}
+Der Browser ignoriert die Zeilenumbrüche in MathML. Wir können die Formel also auch in eine Zeile schreiben.
+
+\begin{codeHTML}{Die Formel in einer Zeile}
+<mn>2</mn><mo>+</mo><mn>3</mn><mo>=</mo><mn>5</mn>
+\end{codeHTML}
+
+\subsection{Brüche}
+
+\subsection{Eine Formelzeile}
+
+Eine Formel wird wie folgt geschrieben: \texttt{<math>} Hier steht die Formel. \texttt{</math>}
+
+Damit die Formel in eine eigene Zeile geschrieben wird, verwenden wir das Absatz-Tag von HTML: \texttt{<p>} ... \texttt{</p>}
+
+Also zusammen:
+\begin{codeHTML}{Eine Formelzeile}
+<p>
+	<math>
+		Hier steht die Formel.
+	</math>
+</p>
+\end{codeHTML}
