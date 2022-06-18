@@ -28,7 +28,7 @@ class Bruch(Zahl):
     def kuerze(self: Bruch) -> Bruch:
         alterZaehler = self.zaehler
         alterNenner = self.nenner
-        kuerzungsFaktor = matheHelfer.ggT(alterZaehler, alterNenner)
+        kuerzungsFaktor = matheHelfer.berechne_ggT(alterZaehler, alterNenner)
         neuerZaehler = alterZaehler // kuerzungsFaktor
         neuerNenner = alterNenner // kuerzungsFaktor
         neuerBruch = Bruch(neuerZaehler, neuerNenner)

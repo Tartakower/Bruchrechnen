@@ -1,32 +1,29 @@
-\section{Beispiel: Das Kürzen von Brüchen}
+\section{Beispiel: Der Kehrwert eines Bruches}
 
 Lies dieses Beispiel sorgfältig durch. Es dient als Vorlage für die Aufgaben, die du danach selbstständig lösen sollst.
 
+\subsection{Der Kehrwert eines Bruches}
+
+Der Kehrwert eines Bruches ist ein anderer Bruch, dessen Zähler der Nenner des ursprünglichen Bruchs und dessen Nenner der ursprüngliche Zähler ist. Beispielsweise lautet der Kehrwert des Bruchs $\frac{2}{3}$ demzufolge $\frac{3}{2}$.
+
+Es gibt eine bekannte Rechenregel zum Dividieren von Brüchen: Ein Bruch wird durch einen anderen Bruch dividiert, indem man den ersten Bruch mit dem Kehrwert des zweiten Bruchs multipliziert:
+\[
+\frac{2}{5} : \frac{1}{2} = \frac{2}{5} \cdot \frac{2}{1} = \frac{4}{5}
+\]
+
 \subsection{Der Algorithmus}
 
-Das Kürzen eines Bruches funktioniert so:
+Das Bilden des Kehrwerts funktioniert so:
 \begin{itemize}
 	\item Nimm einen Bruch.
-	\item Merke dir den Zähler und den Nenner des Bruchs.
-	\item Berechne den größten gemeinsamen Teiler von Zähler und Bruch. (Es gibt dafür eine fertige Funktion.)
-	\item Berechne den gekürzten Zähler.
-	\item Berechne den gekürzten Nenner.
-	\item Erstelle einen neuen Bruch aus dem gekürzten Zähler und dem gekürzten Nenner.
+	\item Benenne eine Variable mit dem Namen \texttt{neuerZaehler} und weise dieser Variablen den Nenner des übergebenen Bruchs zu.
+	\item Verfahre genauso mit dem neuen Nenner.
+	\item Erstelle einen neuen Bruch aus dem neuen Zähler und dem neuen Nenner.
 \end{itemize}
 
-\subsection{Die Funktion zum Kürzen von Brüchen}
+\subsection{Die Funktion zur Berechung des Kehrwerts}
 
-Die Funktion lautet dann:
-
-\begin{codePython}{Funktion zum Kürzen von Brüchen}
-def kuerzeBruch(bruch: Bruch) -> Bruch:
-	alterZaehler = bruch.zaehler
-	alterNenner = bruch.nenner
-	kuerzungsFaktor = ggT(alterZaehler, alterNenner)
-	neuerZaehler = alterZaehler // kuerzungsFaktor
-	neuerNenner = alterNenner // kuerzungsFaktor
-	neuerBruch = Bruch(neuerZaehler, neuerNenner)
-	return neuerBruch
+\begin{codePython}
 \end{codePython}
 
 \subsection{Die Funktion zur Darstellung der Rechnung zum Kürzen}

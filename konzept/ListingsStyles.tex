@@ -3,20 +3,6 @@
 \definecolor{darkred}{rgb}{0.8,0,0}
 \definecolor{darkgreen}{rgb}{0.0,0.5,0}
 
-\lstdefinestyle{syntaxZeile}{
-	language=python, 				        		
-	basicstyle=\ttfamily,
-	keywordstyle=\color{darkred}\bfseries,	
-	identifierstyle=\color{blue},				
-	commentstyle=\color{darkgreen},			
-	stringstyle=\ttfamily\color{darkgreen}, 			    		
-	showstringspaces=false,	        		
-	numbers=none, 	        			
-	frame=none, 				        		
-	tabsize=2,				            		
-	float=htbp,
-	captionpos=b}
-
 \lstdefinestyle{syntaxPython}{
 	language=python, 				        		
 	basicstyle=\linespread{1.2}\ttfamily,
@@ -26,15 +12,15 @@
 	stringstyle=\ttfamily\color{darkgreen}, 			    		
 	showstringspaces=false,
 	breaklines=true, 			        		
-	numbers=left, 				        		
+	numbers=none, 				        		
 	numberstyle=\small,		        			
 	frame=single, 				        		
-	tabsize=2,				            		
+	tabsize=4,				            		
 	float=htbp,
 	captionpos=b,
 	aboveskip=2ex,
 	belowskip=\medskipamount,
-	xleftmargin=.06\textwidth}
+	xleftmargin=.02\textwidth}
 
 \lstdefinestyle{syntaxHTML}{%
 	language=HTML,%
@@ -42,9 +28,9 @@
 	keywordstyle=\color{darkred}\bfseries,%
 	identifierstyle=\color{blue},%	
 	stringstyle=\color{darkgreen},%
-	tabsize=2,%
+	tabsize=4,%
 	showstringspaces=false,%
-	numbers=left,%			        		
+	numbers=none,%			        		
 	numberstyle=\small,%	        			
 	frame=single,%
 	captionpos=b,%
@@ -61,5 +47,5 @@
 	{ö}{{\"o}}1
 }
 
-\lstnewenvironment{codePython}[1]{\lstset{style=syntaxPython,caption=#1}}{}
-\lstnewenvironment{codeHTML}[1]{\lstset{style=syntaxHTML,caption=#1}}{}
+\lstnewenvironment{codePython}{\lstset{style=syntaxPython}}{}
+\lstnewenvironment{codeHTML}{\lstset{style=syntaxHTML}}{}

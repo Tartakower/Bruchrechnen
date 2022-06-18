@@ -1,0 +1,67 @@
+\section{Aufgabe: Das Kürzen von Brüchen}
+
+Lies dieses Beispiel sorgfältig durch. Es dient als Vorlage für die Aufgaben, die du danach selbstständig lösen sollst.
+
+\subsection{Der Algorithmus}
+
+Das Kürzen eines Bruches funktioniert so:
+\begin{itemize}
+	\item Nimm einen Bruch.
+	\item Merke dir den Zähler und den Nenner des Bruchs.
+	\item Berechne den größten gemeinsamen Teiler von Zähler und Bruch. (Es gibt dafür eine fertige Funktion.)
+	\item Berechne den gekürzten Zähler.
+	\item Berechne den gekürzten Nenner.
+	\item Erstelle einen neuen Bruch aus dem gekürzten Zähler und dem gekürzten Nenner.
+\end{itemize}
+
+\subsection{Die Funktion zum Kürzen von Brüchen}
+
+Die Funktion lautet dann:
+
+\begin{codePython}{Funktion zum Kürzen von Brüchen}
+def kuerzeBruch(bruch: Bruch) -> Bruch:
+	alterZaehler = bruch.zaehler
+	alterNenner = bruch.nenner
+	kuerzungsFaktor = ggT(alterZaehler, alterNenner)
+	neuerZaehler = alterZaehler // kuerzungsFaktor
+	neuerNenner = alterNenner // kuerzungsFaktor
+	neuerBruch = Bruch(neuerZaehler, neuerNenner)
+	return neuerBruch
+\end{codePython}
+
+\subsection{Die Funktion zur Darstellung der Rechnung zum Kürzen}
+
+Der Algorithmus lautet:
+\begin{itemize}
+	\item Nimm einen Bruch.
+	\item Erzeuge aus diesem Bruch einen gekürzten Bruch. Verwende dazu die Funktion, die du eben gesehen hast.
+	\item Erzeuge aus dem ursprünglichen Bruch die Beschreibung in MathML. Verwende dazu die Funktion, die du im vorherigen Beispiel gesehen hast.
+	\item Erzeuge aus dem gekürzten Bruch die Beschreibung in MathML. Verwende dazu ebenfalls die Funktion aus dem vorherigen Beispiel.
+	\item Setze jetzt den MathML-Text aus den einzelnen Angaben zusammen.
+	\item Die Zeichenkette beginnt mit <math>.
+	\item Es folgt der MathML-Text für den ungekürzten Bruch.
+	\item Dann kommt das Gleichheitszeichen.
+	\item Es folge der MathML-Text für den gekürzten Bruch.
+	\item Die Zeichenkette beginnt mit </math>
+\end{itemize}
+
+Die Funktion lautet dann:
+\begin{codePython}{MathML für das Kürzen eines Bruchs}{code:schreibeKuerzen}
+def schreibeKuerzen(bruch: Bruch) -> str:
+	bruchGekuerzt = kuerzeBruch(bruch)
+	textUngekuerzt = schreibeBruch(bruch)
+	textGekuerzt = schreibeBruch(bruchGekuerzt)
+	return "<math>" + textUngekuerzt + "<mo>=</mo>" + textGekuerzt + "</math>"
+\end{codePython}
+
+\subsection{Überprüfung des Ergebnisses}
+
+Wir überprüfen das Ergebnis analog zum Vorgehen im Beispiel für die Darstellung eines Bruchs. Dazu ergänzen wir in der Funktion \texttt{schreibeMathML()} die
+Zeilen
+
+\begin{codePython}{Integration des Kürzens}
+bruchUngekuerzt: Bruch = Bruch(6,8)
+inhalt += "\n\t\t<p>"
+inhalt += schreibeKuerzen(bruchUngekuerzt)
+inhalt += "</p>"
+\end{codePython}

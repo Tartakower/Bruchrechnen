@@ -1,0 +1,33 @@
+\section{Zeichenketten}
+
+\subsection{Was ist eine Zeichenkette?}
+
+\subsection{Das Zusammenfügen von Zeichenketten}
+
+\subsection{Der Algorithmus zur Darstellung eines Bruchs in MathML}
+
+Einen Bruch in MathML zu schreiben, ist nicht schwierig, aber mühsam. Daher möchten wir eine Funktion ein Python programmieren, die das automatisch erledigt. Der Algorithmus lautet so:
+\begin{itemize}
+	\item Nimm einen Bruch entgegen.
+	\item Wandle den Zähler des Bruchs in eine Zeichenkette und speichere diese Zeichenkette in einer Variablen.
+	\item Verfahre genauso mit dem Nenner.
+	\item Baue die Zeichenkette für das Ergebnis aus Einzelteilen zusammen.
+	\item Beginne die Zeichenkette mit \texttt{<mfrac>}.
+	\item Rahme die Zeichenkette, die den Zähler beschreibt, mit den Tags \texttt{<mi>} und \texttt{</mi>} ein.
+	\item Verfahre ebenso mit der Zeichenkette für den Nenner.
+	\item Beende die Zeichenkette mit \texttt{</mfrac>}.
+	\item Gib die Zeichenkette zurück.
+\end{itemize}
+
+\subsection{Die Funktion zur Darstellung eines Bruchs in MathML}
+
+\begin{codePython}
+def schreibeBruch(bruch: Bruch) -> str:
+	zaehlerAlsString = str(bruch.zaehler)
+	nennerAlsString = str(bruch.nenner)
+	ergebnis = "<mfrac>"
+	ergebnis = ergebnis + "<mi>" + zaehlerAlsString + "</mi>"
+	ergebnis = ergebnis + "<mi>" + nennerAlsString + "</mi>"
+	ergebnis = ergebnis + "</mfrac>"
+	return ergebnis
+\end{codePython}
