@@ -45,10 +45,21 @@ def erweitereBruch(bruch, faktor):
 Wer möchte, kann die Typen der Parameter und des Ergebnisses angeben. Es hilft, Fehler zu vermeiden. Programmierprofis tun das.
 
 Die Signaturzeile für die Funktion zum Erweitern lautet dann:
+
 \begin{codePython}
 def erweitereBruch(bruch: Bruch, faktor: int) -> Bruch:
 \end{codePython}
 
 Der Rumpf bleibt unverändert.
 
+\subsection{Eine Funktion verwenden}
+
+Eine Funktion kann beliebig oft verwendet werden. Oft benutzen wir anstatt „verwenden“ die Formulierung „die Funktion wird aufgerufen“. In der Regel lässt man sich für verschiedene Parameterwerte das jeweilige Ergebnis berechnen.
+
+\begin{codePython}
+bruch_2 = Bruch(1,2)
+bruch_3 = erweitereBruch(bruch_2, 5)
+\end{codePython}
+
+Wir können eine Funktion auch innerhalb einer anderen Funktion aufrufen. Das ist sehr hilfreich. Dann kann sich eine Funktion für die Berechnung von Zwischenschritte die Hilfe einer anderen Funktion holen.
 

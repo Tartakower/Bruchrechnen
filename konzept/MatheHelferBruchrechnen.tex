@@ -27,12 +27,11 @@
 
 % Koma-Script für Inhaltsverzeichnis
 \usepackage{tocbasic}
-%\DeclareTOCStyleEntries[dynnumwidth=true]{tocline}{chapter,section,subsection}
+\DeclareTOCStyleEntries[dynnumwidth=true]{tocline}{chapter,section,subsection}
 
 \usepackage{color}
 \usepackage{listings}
 \usepackage[fleqn]{amsmath}
-%\usepackage{eurosym}
 \usepackage{scrhack}
 %\usepackage[top=20mm,left=20mm,right=20mm,bottom=30mm]{geometry}
 \mathindent=2em
@@ -42,12 +41,15 @@
 
 \sloppy
 
-\input{Umgebungen}
+%\input{Umgebungen}
 \input{ListingsStyles}
 
 \usepackage[colorlinks=true,linkcolor=blue]{hyperref}
 
-%\listfiles % Gibt die Versionsnummern der geladenen Pakete in der log-Datei aus.
+%\includeonly{%
+%	./Kapitel/MathML,%
+%	./Kapitel/AufgabeMathML%
+%}
 
 \begin{document}
 	
@@ -60,26 +62,39 @@
 
 \tableofcontents
 
-\chapter{Aufgabenstellung und Planung}
+\chapter{Thema und Planung}
 
 \include{./Kapitel/Aufgabenstellung}
+\include{./Kapitel/TechnischeRahmenbedingungen}
+\include{./Kapitel/ZeitlichePlanung}
+\include{./Kapitel/Vorkenntnisse}
 
-\chapter{Erklärungen und Aufgaben}
+\chapter{Zum Warmwerden: MathML}
 
 \include{./Kapitel/MathML}
 \include{./Kapitel/AufgabeMathML}
 
+\chapter{Algorithmen und Funktionen}
+
 \include{./Kapitel/Algorithmen}
+\include{./Kapitel/Variablen}
 \include{./Kapitel/Funktionen}
+\include{./Kapitel/AufgabeKehrwert}
+
+\chapter{Zeichenketten}
 \include{./Kapitel/Zeichenketten}
+
+\chapter{Das Beispiel}
 
 \include{./Kapitel/BeispielErweitern}
 
-\include{./Kapitel/AufgabeKehrwert}
+\chapter{Die Aufgaben}
+
 \include{./Kapitel/AufgabeKuerzen}
 \include{./Kapitel/AufgabeBruchZuDezimalzahl}
 \include{./Kapitel/AufgabeDezimalzahlZuBruch}
 
+\chapter{Aufgaben für Könner}
 
 \include{./Kapitel/AufgabeGrundrechenarten}
 \include{./Kapitel/GemischteZahl}

@@ -1,66 +1,35 @@
+# Ab hier bitte nichts ändern!
 from __future__ import annotations
-from dataclasses import dataclass
 
-@dataclass(frozen=True)
-class Bruch():
+from datenstrukturen import Bruch, Dezimalzahl
+import mathefunktionen
 
-    zaehler: int
-    nenner: int
+# Ab hier dürft ihr Änderungen vornehmen.
 
-    def __str__(self: Bruch) -> str:
-        return "Zähler: " + str(self.zaehler) + ", Nenner: " + str(self.nenner)
-
-@dataclass(frozen=True)
-class Dezimalzahl():
-
-    kommazahl: float
-
-    def __str__(self: Dezimalzahl) -> str:
-        return "Kommazahl: " + str(self.kommazahl)
-
-# Ende der Klassendefinitionen
-
-# Beginn der mathematischen Hilfsfunktionen
-def ggT(a: int, b: int) -> int:
-    while b != 0:
-        h = a % b
-        a = b
-        b = h
-    return a
-
-def berechneZehnerPotenz(zahl: float) -> int:
-    zahlAlsString = str(zahl)
-    nachkommastellen: str = zahlAlsString.partition(".")[2]
-    anzahlNachkommastellen = len(nachkommastellen)
-    ergebnis = pow(10,anzahlNachkommastellen)
-    return ergebnis
-
-# Ende der mathematischen Hilffunktionen
-
-def berechneBruchWert(bruch: Bruch) -> float:
-    ergebnis = bruch.zaehler / bruch.nenner
-    return ergebnis
+def erweitereBruch(bruch: Bruch, faktor: int) -> Bruch:
+    alterZaehler = bruch.zaehler
+    alterNenner = bruch.nenner
+    neuerZaehler = alterZaehler * faktor
+    neuerNenner = alterNenner * faktor
+    neuerBruch = Bruch(neuerZaehler, neuerNenner)
+    return neuerBruch
 
 def kuerzeBruch(bruch: Bruch) -> Bruch:
     alterZaehler = bruch.zaehler
     alterNenner = bruch.nenner
-    kuerzungsFaktor = ggT(alterZaehler, alterNenner)
+    kuerzungsFaktor = mathefunktionen.berechne_ggT(alterZaehler, alterNenner)
     neuerZaehler = alterZaehler // kuerzungsFaktor
     neuerNenner = alterNenner // kuerzungsFaktor
     neuerBruch = Bruch(neuerZaehler, neuerNenner)
     return neuerBruch
 
 def wandleBruchZuDezimalzahl(bruch: Bruch) -> Dezimalzahl:
-    wert = berechneBruchWert(bruch)
+    wert = bruch.zaehler / bruch.nenner
     return Dezimalzahl(wert)
-
-def berecheDezimalzahlWert(dezimalzahl: Dezimalzahl) -> float:
-    ergebnis = dezimalzahl.kommazahl
-    return ergebnis
 
 def wandleDezimalzahlZuBruch(dezimalzahl: Dezimalzahl) -> Bruch:
     dezimalwert = dezimalzahl.kommazahl
-    neuerNenner = berechneZehnerPotenz(dezimalwert)
+    neuerNenner = mathefunktionen.berechne_ZehnerPotenz(dezimalwert)
     neuerZaehler = int(dezimalwert * neuerNenner)
     neuerBruch = Bruch(neuerZaehler, neuerNenner)
     return neuerBruch
@@ -70,7 +39,10 @@ def wandleDezimalzahlZuBruch(dezimalzahl: Dezimalzahl) -> Bruch:
 def schreibeBruch(bruch: Bruch) -> str:
     zaehlerAlsString = str(bruch.zaehler)
     nennerAlsString = str(bruch.nenner)
-    ergebnis = "<mfrac><mi>" + zaehlerAlsString + "</mi><mi>" + nennerAlsString + "</mi></mfrac>"
+    ergebnis = "<mfrac>"
+    ergebnis = ergebnis + "<mn>" + zaehlerAlsString + "</mn>"
+    ergebnis = ergebnis + "<mn>" + nennerAlsString + "</mn>"
+    ergebnis = ergebnis + "</mfrac>"
     return ergebnis
 
 def schreibeDezimalzahl(dezimalzahl: Dezimalzahl) -> str:
@@ -78,34 +50,50 @@ def schreibeDezimalzahl(dezimalzahl: Dezimalzahl) -> str:
     zahlAlsString = str(dezimalwert)
     return "<mn>" + zahlAlsString + "</mn>"
 
+def schreibeErweitern(bruch: Bruch, faktor: int) -> str:
+    bruchErweitert = erweitereBruch(bruch, faktor)
+    textAlterBruch = schreibeBruch(bruch)
+    textNeuerBruch = schreibeBruch(bruchErweitert)
+    return textAlterBruch + "<mo>=</mo>" + textNeuerBruch
+
 def schreibeKuerzen(bruch: Bruch) -> str:
     bruchGekuerzt = kuerzeBruch(bruch)
     textUngekuerzt = schreibeBruch(bruch)
     textGekuerzt = schreibeBruch(bruchGekuerzt)
-    return "<math>" + textUngekuerzt + "<mo>=</mo>" + textGekuerzt + "</math>"
+    return textUngekuerzt + "<mo>=</mo>" + textGekuerzt
 
 def vonBruchZuDezimalzahl(bruch: Bruch) -> str:
     dezimalzahl = wandleBruchZuDezimalzahl(bruch)
     textBruch = schreibeBruch(bruch)
     textDezimalzahl = schreibeDezimalzahl(dezimalzahl)
-    return "<math>" + textBruch + "<mo>=</mo>" + textDezimalzahl + "</math>"
+    return textBruch + "<mo>=</mo>" + textDezimalzahl
 
 def vonDezimalzahlZuBruch(dezimalzahl: Dezimalzahl) -> str:
     bruch = wandleDezimalzahlZuBruch(dezimalzahl)
     textBruch = schreibeBruch(bruch)
     textDezimalzahl = schreibeDezimalzahl(dezimalzahl)
-    return "<math>" + textDezimalzahl + "<mo>=</mo>" + textBruch + "</math>"
+    return textDezimalzahl + "<mo>=</mo>" + textBruch
 
 # In dieser Funktion darf ausprobiert werden.
 
 def schreibeMathML() -> str:
+    inhalt = "<p><math><mn>2</mn><mo>+</mo><mn>3</mn><mo>=</mo><mn>5</mn></math></p>"
+    bruch = Bruch(3,4)
+    inhalt += "\n\t\t<p><math>"
+    inhalt += schreibeBruch(bruch)
+    inhalt += "</math></p>"
+    inhalt += "\n\t\t<p><math>"
+    inhalt += schreibeErweitern(bruch, 3)
+    inhalt += "</math></p>"
+
     bruchUngekuerzt: Bruch = Bruch(6,8)
-    bruch: Bruch = Bruch(3,4)
-    inhalt = "<p>" 
+    inhalt += "\n\t\t<p><math>"
     inhalt += schreibeKuerzen(bruchUngekuerzt)
-    inhalt += "</p>\n\t\t<p>"
+    inhalt += "</math></p>"
+    inhalt += "\n\t\t<p><math>"
     inhalt += vonBruchZuDezimalzahl(bruch)
-    inhalt += "</p>\n\t\t<p>"
+    inhalt += "</math></p>"
+    inhalt += "\n\t\t<p><math>"
     inhalt += vonDezimalzahlZuBruch(Dezimalzahl(0.25))
-    inhalt += "</p>"
+    inhalt += "</math></p>"
     return inhalt

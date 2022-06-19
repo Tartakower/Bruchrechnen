@@ -1,8 +1,8 @@
 % Umgebungen
 
-\newcounter{regelsatz}[section]
+\newcounter{regelsatz}[chapter]
 
-\newenvironment{ncsEnvironmentEins}[1]{\stepcounter{regelsatz} \textbf{\arabic{section}.\arabic{regelsatz} #1} \\}{}
+\newenvironment{ncsEnvironmentEins}[1]{\stepcounter{regelsatz} \textbf{\arabic{chapter}.\arabic{section}.\arabic{regelsatz} #1} \\}{}
 %\newcommand{\aufgabe}[1]{\begin{ncsEnvironmentEins}{Aufgabe: #1} \end{ncsEnvironmentEins}}
 \newcommand{\beispiel}[1]{\begin{ncsEnvironmentEins}{Beispiel: #1} \end{ncsEnvironmentEins}}
 \newcommand{\hinweis}[1]{\begin{ncsEnvironmentEins}{Hinweis: #1} \end{ncsEnvironmentEins}}
