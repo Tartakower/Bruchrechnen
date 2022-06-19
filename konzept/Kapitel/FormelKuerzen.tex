@@ -1,0 +1,53 @@
+\section{Aufgabe: Die Formel zum Kürzen von Brüchen in MathML}
+
+\subsection*{Die Vorarbeiten}
+
+Hast du die Funktion zum Kürzen eines Bruchs bereit? Wie heißt sie?
+
+Außerdem benötigst du wieder die Funktion zur Darstellung eines Bruchs in MathML.
+
+\subsection*{Der Algorithmus}
+
+Wie lautet der Algorithmus für die Formeldarstellung des Kürzens?
+
+{\Large
+	\begin{itemize}
+		\item Nimm einen Bruch entgegen. 
+		\item  
+		\item  
+		\item  
+		\item  
+		\item  
+	\end{itemize}
+}
+
+
+\subsection*{Die Funktion}
+
+Die Signatur der Funktion lautet:
+
+\begin{codePython}
+def schreibeKuerzen(bruch: Bruch) -> str:
+\end{codePython}
+
+Wie geht es weiter?
+
+\subsection*{Überprüfung des Ergebnisses}
+
+Überprüfe das Ergebnis in der Datei \texttt{spielwiese.py}. Der Bruch $\frac{6}{8}$ muss gekürzt den Bruch $\frac{3}{4}$ ergeben.
+
+\begin{codeHTML}
+<mfrac><mn>6</mn><mn>8</mn></mfrac><mo>=</mo>
+	<mfrac><mn>3</mn><mn>4</mn></mfrac>
+\end{codeHTML}
+
+\subsection*{Darstellung der Formel im Browser}
+
+Ergänze in der Funktion \texttt{schreibeMathML()} die Zeilen für Kürzen für den Bruch $\frac{6}{8}$ analog zum Erweitern.
+
+Führe die Datei \texttt{htmlErzeugung.py} aus.
+
+Prüfe im Firefox-Browser, wie die Datei \texttt{index.html} aussieht. Dort sollte eine Zeile stehen, die so aussieht:
+\[
+\frac{6}{8} = \frac{3}{4}
+\]

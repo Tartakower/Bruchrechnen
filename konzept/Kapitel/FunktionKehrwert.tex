@@ -1,0 +1,46 @@
+\section{Aufgabe: Der Kehrwert eines Bruches}
+
+\subsection*{Der Kehrwert eines Bruches}
+
+Der Kehrwert eines Bruches ist ein anderer Bruch, dessen Zähler der Nenner des ursprünglichen Bruchs und dessen Nenner der ursprüngliche Zähler ist. Beispielsweise lautet der Kehrwert des Bruchs $\frac{2}{3}$ demzufolge $\frac{3}{2}$.
+
+
+
+\subsection*{Der Algorithmus}
+
+Wie lautet der Algorithmus?
+\begin{itemize}
+	\item Nimm einen Bruch.
+	\item $\dots$
+	\item $\dots$
+	\item $\dots$
+	\item $\dots$
+\end{itemize}
+
+\subsection*{Die Funktion zur Berechung des Kehrwerts}
+
+Die Signatur der Funktion lautet:
+
+\begin{codePython}
+def berechneKehrwert(bruch: Bruch) -> Bruch:
+\end{codePython}
+
+Wie geht es weiter?
+
+\subsection*{Überprüfung des Ergebnisses}
+
+Erzeuge in der Datei \texttt{spielwiese.py} einen Bruch, z.B. $\frac{2}{5}$. Berechne den Kehrwertbruch und lasse diesen anzeigen.
+
+\begin{codePython}
+bruch_1 = Bruch(2,5)
+kehrwert = berechneKehrwert(bruch_1)
+print(kehrwert)
+\end{codePython}
+
+\subsection*{Weshalb ist der Kehrwert wichtig?}
+
+Wir benötigen den Kehrwert beim Dividieren von Brüchen. Es gibt eine bekannte Rechenregel: Ein Bruch wird durch einen anderen Bruch dividiert, indem man den ersten Bruch mit dem Kehrwert des zweiten Bruchs multipliziert:
+\[
+\frac{2}{5} : \frac{1}{2} = \frac{2}{5} \cdot \frac{2}{1} = \frac{4}{5}
+\]
+
