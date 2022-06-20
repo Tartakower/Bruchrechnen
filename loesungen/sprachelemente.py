@@ -1,5 +1,5 @@
 from datenstrukturen import Bruch
-from matheHelfer import erweitereBruch
+from mathehelfer import erweitereBruch
 
 
 wichtige_zahl = 42
@@ -16,3 +16,15 @@ bruch_2 = Bruch(zaehler_2, nenner_2)
 
 bruch_2 = Bruch(1,2)
 bruch_3 = erweitereBruch(bruch_2, 5)
+
+eine_zeichenkette = "x2-d2"
+berg = '8000er Gipfel'
+ein_ganzer_satz = "Python ist toll!"
+
+formel = "<math>"
+formel = formel + "<mn>2</mn>"
+formel = formel + "<mo>+</mo>"
+formel = formel + "<mn>3</mn>"
+formel = formel + "<mo>=</mo>"
+formel = formel + "<mn>5</mn>"
+formel = formel + "</math>"

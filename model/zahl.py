@@ -1,5 +1,5 @@
 from __future__ import annotations
-import matheHelfer
+import mathehelfer
 
 class Zahl():
     pass
@@ -28,7 +28,7 @@ class Bruch(Zahl):
     def kuerze(self: Bruch) -> Bruch:
         alterZaehler = self.zaehler
         alterNenner = self.nenner
-        kuerzungsFaktor = matheHelfer.berechne_ggT(alterZaehler, alterNenner)
+        kuerzungsFaktor = mathehelfer.berechne_ggT(alterZaehler, alterNenner)
         neuerZaehler = alterZaehler // kuerzungsFaktor
         neuerNenner = alterNenner // kuerzungsFaktor
         neuerBruch = Bruch(neuerZaehler, neuerNenner)

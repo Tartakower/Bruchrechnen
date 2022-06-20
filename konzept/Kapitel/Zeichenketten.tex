@@ -2,4 +2,51 @@
 
 \subsection*{Was ist eine Zeichenkette?}
 
+Eine Zeichenkette enthält ein oder mehrere beliebige Zeichen, also Buchstaben, Zahlen oder Sonderzeichen. Die Zeichen stehen hintereinander. Eine Zeichenkette wird eingeschlossen in Hochkommata (') oder hochgestellte Anführungszeichen (").
+
+\begin{codePython}
+eine_zeichenkette = "r2d2"
+berg = '8000er-Gipfel'
+ein_ganzer_satz = "Python ist toll!"
+\end{codePython}
+
+Häufig benutzen wir den englischen Begriff für Zeichenkette: String. Mit Strings kann man viele interessante Dinge anstellen.
+
 \subsection*{Das Zusammenfügen von Zeichenketten}
+
+In Python können zwei Strings mit dem Pluszeichen zu einem langen String zusammengefügt werden:
+
+\begin{codePython}
+gruss = "Hallo " + "Welt!"
+\end{codePython}
+
+In \texttt{gruss} steht jetzt der String \texttt{"Hallo Welt!"}.
+
+Dass das Pluszeichen in diesem Fall nicht das Addieren von Zahlen, sondern das Zusammenfügen von Strings bedeutet, daran gewöhnt man sich schnell!
+
+Wir möchten einen String zusammenbauen, der in MathML eine Rechenformel beschreibt.
+
+Die Formel
+\[
+2 + 3 = 5
+\]
+lautet in MathML:
+
+\begin{codeHTML}
+<math><mn>2</mn><mo>+</mo><mn>3</mn><mo>=</mo><mn>5</mn></math>
+\end{codeHTML}
+
+Diese Formel können wir in Python schrittweise aus kleinen Strings zu einem langen String zusammensetzen. 
+
+\lstset{style=syntaxPython}
+\begin{lstlisting}
+formel = "<math>"
+formel = formel + "<mn>2</mn>"
+formel = formel + "<mo>+</mo>"
+formel = formel + "<mn>3</mn>"
+formel = formel + "<mo>=</mo>"
+formel = formel + "<mn>5</mn>"
+formel = formel + "</math>"
+\end{lstlisting}
+
+Dabei nehmen wir die bereits erstellte Formel, fügen den nächsten kurzen String an und merken uns das Ergebnis wieder in der Variablen \texttt{formel}.

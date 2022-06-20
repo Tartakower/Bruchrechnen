@@ -1,20 +1,21 @@
-\section{Beispiel: Das Erweitern eines Bruchs}
+\section{Lösung: Das Erweitern eines Bruchs}
 
-Das folgende Beispiel fasst nochmals alle zusammen, was in den Kapitel über MathML, Algorithmen, Funktionen und Zeichenketten vorgestellt wurde. Lies dieses Beispiel sorgfältig durch. Es dient als Vorlage für die Aufgaben, die du danach selbstständig lösen sollst.
-
-\subsection{Der Algorithmus zum Erweitern}
+\subsection*{Der Algorithmus zum Erweitern}
 
 \begin{itemize}
 	\item Nimm einen Bruch und den Faktor, mit dem du den Bruch erweitern willst.
-	\item Merke dir den Zähler und den Nenner des Bruchs jeweils in einer Variablen.
-	\item Multipliziere diese Variablen jeweils mit dem Erweiterungsfaktor.
-	\item Erstelle einen neuen Bruch aus dem neuen Zähler und dem neuen Nenner.
+	\item Merke dir den Zähler in einer Variablen.
+	\item Merke dir den Nenner des Bruchs in einer zweiten Variablen.
+	\item Multipliziere die Variable für den Zähler mit dem Erweiterungsfaktor. Merke dir das Ergebnis in einer Variablen.
+	\item Verfahre genauso mit dem Nenner.
+	\item Erstelle einen neuen Bruch mit dem neuen Zähler und dem neuen Nenner. Merke dir das Ergebnis in einer Variablen.
+	\item Gib die Variable zurück, die den neuen Bruch enthält.
 \end{itemize}
 
-\subsection{Die Funktion zum Erweitern}
+\subsection*{Die Funktion zum Erweitern}
 
 \begin{codePython}
-def erweitereBruch(bruch: Bruch, faktor: int) -> Bruch:
+def erweitereBruch(bruch, faktor):
 	alterZaehler = bruch.zaehler
 	alterNenner = bruch.nenner
 	neuerZaehler = alterZaehler * faktor
@@ -23,69 +24,4 @@ def erweitereBruch(bruch: Bruch, faktor: int) -> Bruch:
 	return neuerBruch
 \end{codePython}
 
-\subsection{Die Funktion zur Darstellung eines Bruchs in MathML}
-
-Der Algorithmus lautet:
-\begin{itemize}
-	\item Nimm einen Bruch entgegen.
-	\item Wandle den Zähler des Bruchs in eine Zeichenkette und speichere diese Zeichenkette in einer Variablen.
-	\item Verfahre genauso mit dem Nenner.
-	\item Baue die Zeichenkette für das Ergebnis aus Einzelteilen zusammen, wie in den nächsten Schritten beschrieben.
-	\item Beginne die Zeichenkette mit \texttt{<mfrac>}.
-	\item Rahme die Zeichenkette, die den Zähler beschreibt, mit den Tags \texttt{<mn>} und \texttt{</mn>} ein.
-	\item Verfahre ebenso mit der Zeichenkette für den Nenner.
-	\item Beende die Zeichenkette mit \texttt{</mfrac>}.
-	\item Gib die Zeichenkette zurück.
-\end{itemize}
-
-\begin{codePython}
-def schreibeBruch(bruch: Bruch) -> str:
-	zaehlerAlsString = str(bruch.zaehler)
-	nennerAlsString = str(bruch.nenner)
-	ergebnis = "<mfrac>"
-	ergebnis = ergebnis + "<mn>" + zaehlerAlsString + "</mn>"
-	ergebnis = ergebnis + "<mn>" + nennerAlsString + "</mn>"
-	ergebnis = ergebnis + "</mfrac>"
-	return ergebnis
-\end{codePython}
-
-\subsection{Die Funktion zur Darstellung der Formel in MathML}
-
-Der Algorithmus lautet:
-\begin{itemize}
-	\item Nimm einen Bruch.
-	\item Erzeuge aus diesem Bruch einen erweiterten Bruch. Verwende dazu die Funktion \ref{sec:FunktionErweitern}, die du eben gesehen hast.
-	\item Erzeuge aus dem ursprünglichen Bruch die Beschreibung in MathML. Verwende dazu die Funktion \ref{sec:FunktionSchreibeBruch} von oben.
-	\item Erzeuge aus dem erweiterten Bruch die Beschreibung in MathML. Verwende dazu ebenfalls die Funktion \ref{sec:FunktionSchreibeBruch}.
-	\item Setze jetzt den MathML-Text aus den einzelnen Angaben zusammen wie in den folgenden Schritten angegeben:
-	\item Es beginnt mit dem MathML-Text für den ungekürzten Bruch.
-	\item Dann kommt das Gleichheitszeichen.
-	\item Es folgt der MathML-Text für den gekürzten Bruch.
-\end{itemize}
-
-Die Funktion lautet dann:
-\begin{codePython}
-def schreibeErweitern(bruch: Bruch, faktor: int) -> str:
-	bruchErweitert = erweitereBruch(bruch, faktor)
-	textAlterBruch = schreibeBruch(bruch)
-	textNeuerBruch = schreibeBruch(bruchErweitert)
-	ergebnis = textAlterBruch + "<mo>=</mo>" + textNeuerBruch
-	return ergebnis
-\end{codePython}
-
-\subsection{Überprüfung des Ergebnisses}
-
-Wir überprüfen das Ergebnis, indem wir in der Funktion \texttt{schreibeMathML()} folgende Zeilen ergänzen:
-
-\begin{codePython}
-inhalt = inhalt + "\n\t\t<p><math>"
-inhalt = inhalt + schreibeErweitern(Bruch(3,4), 3)
-inhalt = inhalt + "</math></p>"
-\end{codePython}
-
-Jetzt führen wir die Datei \texttt{htmlErzeugung.py} aus.
-
-Prüfe im Firefox-Browser, wie die Datei \texttt{index.html} aussieht. Dort sollte eine Zeile stehen, die so aussieht:
-\[
-\frac{3}{4} = \frac{9}{12}
-\]
+\input{./Kapitel/MathMLErweitern}

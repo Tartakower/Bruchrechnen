@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from datenstrukturen import Bruch, Dezimalzahl
-from mathefunktionen import berechne_ggT, berechne_ZehnerPotenz
+import mathefunktionen
 
 # Ab hier dürft ihr Änderungen vornehmen.
 
@@ -22,13 +22,12 @@ def berechneKehrwert(bruch: Bruch) -> Bruch:
     kehrwert = Bruch(neuerZaehler, neuerNenner)
     return kehrwert
 
-
 def kuerzeBruch(bruch: Bruch) -> Bruch:
     alterZaehler = bruch.zaehler
     alterNenner = bruch.nenner
-    kuerzungsFaktor = berechne_ggT(alterZaehler, alterNenner)
-    neuerZaehler = alterZaehler // kuerzungsFaktor
-    neuerNenner = alterNenner // kuerzungsFaktor
+    ggT = mathefunktionen.berechne_ggT(alterZaehler, alterNenner)
+    neuerZaehler = alterZaehler // ggT
+    neuerNenner = alterNenner // ggT
     neuerBruch = Bruch(neuerZaehler, neuerNenner)
     return neuerBruch
 
@@ -38,7 +37,7 @@ def wandleBruchZuDezimalzahl(bruch: Bruch) -> Dezimalzahl:
 
 def wandleDezimalzahlZuBruch(dezimalzahl: Dezimalzahl) -> Bruch:
     dezimalwert = dezimalzahl.kommazahl
-    neuerNenner = berechne_ZehnerPotenz(dezimalwert)
+    neuerNenner = mathefunktionen.berechne_ZehnerPotenz(dezimalwert)
     neuerZaehler = int(dezimalwert * neuerNenner)
     neuerBruch = Bruch(neuerZaehler, neuerNenner)
     return neuerBruch
@@ -96,8 +95,9 @@ def schreibeMathML() -> str:
     inhalt = inhalt + "\n\t\t<p><math>"
     inhalt = inhalt + schreibeBruch(bruch)
     inhalt = inhalt + "</math></p>"
+    bruch = Bruch(3,4)
     inhalt = inhalt + "\n\t\t<p><math>"
-    inhalt = inhalt + schreibeErweitern(Bruch(3,4), 3)
+    inhalt = inhalt + schreibeErweitern(bruch, 3)
     inhalt = inhalt + "</math></p>"
     bruchUngekuerzt = Bruch(6,8)
     inhalt = inhalt + "\n\t\t<p><math>"
