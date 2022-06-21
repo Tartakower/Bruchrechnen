@@ -23,7 +23,16 @@ def kuerzeBruch(bruch: Bruch) -> Bruch:
     neuerBruch = Bruch(neuerZaehler, neuerNenner)
     return neuerBruch
 
-
+def multipliziereBrueche(erster_faktor: Bruch, zweiter_faktor: Bruch) -> Bruch:
+    erster_zaehler = erster_faktor.zaehler
+    erster_nenner = erster_faktor.nenner
+    zweiter_zaehler = zweiter_faktor.zaehler
+    zweiter_nenner = zweiter_faktor.nenner
+    produkt_zaehler = erster_zaehler * zweiter_zaehler
+    produkt_nenner = erster_nenner * zweiter_nenner
+    produkt = Bruch(produkt_zaehler, produkt_nenner)
+    produkt = kuerzeBruch(produkt)
+    return produkt
 
 # Funktionen für MathML
 
@@ -50,6 +59,13 @@ def schreibeKuerzen(bruch: Bruch) -> str:
     ergebnis = textUngekuerzt + "<mo>=</mo>" + textGekuerzt
     return ergebnis
 
+def schreibeMultiplikation(erster_faktor: Bruch, zweiter_faktor: Bruch) -> str:
+    text_erster_faktor = schreibeBruch(erster_faktor)
+    text_zweiter_faktor = schreibeBruch(zweiter_faktor)
+    produkt = multipliziereBrueche(erster_faktor, zweiter_faktor)
+    text_produkt = schreibeBruch(produkt)
+    ergebnis = text_erster_faktor + "<mo>&middot;</mo>" + text_zweiter_faktor + "<mo>=</mo>" + text_produkt
+    return ergebnis
 
 # In dieser Funktion darf ausprobiert werden.
 
