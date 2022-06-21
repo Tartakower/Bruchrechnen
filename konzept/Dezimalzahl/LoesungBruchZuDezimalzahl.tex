@@ -1,0 +1,88 @@
+\section{Lösung: Die Umwandlung eines Bruchs in eine Dezimalzahl}
+
+\subsection*{Der Algorithmus zur Umwandlung}
+
+\begin{itemize}
+	\item Nimm einen Bruch entgegen.
+	\item Merke dir den Zähler des Bruchs in einer Variablen.
+	\item Merke dir den Nenner des Bruchs in einer zweiten Variablen.
+	\item Berechne den Quotienten aus Zähler und Nenner und merke dir das Ergebnis in einer neuen Variablen. 
+	\item Erzeuge mit dem Quotienten eine Dezimalzahl und merke dir die Dezimalzahl in einer Variablen.
+	\item Gib die Variable, welche die Dezimalzahl enthält, zurück.
+\end{itemize}
+
+\subsection*{Die Funktion zur Umwandlung}
+
+\begin{codePython}
+def wandleBruchZuDezimalzahl(bruch: Bruch) -> Dezimalzahl:
+	zaehler = bruch.zaehler
+	nenner = bruch.nenner
+	kommazahl = zaehler / nenner
+	dezimalzahl = Dezimalzahl(kommazahl)
+	return dezimalzahl
+\end{codePython}
+
+\subsection*{Der Algorithmus zur Darstellung in MathML}
+
+\begin{itemize}
+	\item Nimm einen Bruch entgegen.
+	\item Wandle den Bruch in eine Dezimalzahl und merke dir das Ergebnis in einer Variablen. Verwende dazu die Funktion \texttt{wandleBruchZuDezimalzahl}.
+	\item Erstelle den MathML-String für den Bruch. Verwende dazu die Funktion \texttt{schreibeBruch}.
+	\item Erstelle den MathML-String für die Dezimalzahl. Verwende dazu die Funktion \texttt{schreibeDezimalzahl}
+	\item Baue den MathML-String aus den Einzelteilen zusammen.
+	\item Gib die Variable für den Ergebnisstring zurück.
+\end{itemize}
+
+\subsection*{Die Funktion zur Darstellung in MathML}
+
+\begin{codePython}
+def schreibeBruchZuDezimalzahl(bruch: Bruch) -> str:
+	dezimalzahl = wandleBruchZuDezimalzahl(bruch)
+	textBruch = schreibeBruch(bruch)
+	textDezimalzahl = schreibeDezimalzahl(dezimalzahl)
+	ergebnis = textBruch + "<mo>=</mo>" + textDezimalzahl
+	return ergebnis
+\end{codePython}
+
+\subsection*{Überprüfung des Ergebnisses}
+
+Überprüfe das Ergebnis in der Datei \texttt{uebungsplatz.py}. Ergänze dazu folgende Zeilen:
+
+\begin{codePython}
+bruch = Bruch(3,4)
+dezimalzahl = mathehelfer.wandleBruchZuDezimalzahl(bruch)
+print(dezimalzahl)
+\end{codePython}
+
+Führe die Datei
+\begin{quote}
+\texttt{uebungsplatz.py}
+\end{quote}
+als Python-Skript aus. Das Ergebnis sollte diese Zeile enthalten:
+\begin{quote}
+\texttt{Dezimalzahl(kommazahl=0.75)}
+\end{quote} 
+
+\subsection*{Darstellung der Formel im Browser}
+
+Ergänze in der Funktion \texttt{schreibeMathML()} folgende Zeilen:
+
+\begin{codePython}    
+bruch = Bruch(3,4)
+inhalt = inhalt + "\n\t\t<p><math>"
+inhalt = inhalt + schreibeBruchZuDezimalzahl(bruch)
+inhalt = inhalt +  "</math></p>"
+\end{codePython}
+
+Führe die Datei
+\begin{quote}
+\texttt{htmlErzeugung.py}
+\end{quote}
+als Python-Skript aus. Schaue dir die Datei
+\begin{quote}
+\texttt{index.html}
+\end{quote} im Firefox-Browser an. Dort sollte folgende Zeile zu lesen sein:
+\[
+\frac{3}{4} = 0.75
+\]
+

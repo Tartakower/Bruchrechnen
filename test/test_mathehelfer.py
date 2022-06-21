@@ -28,7 +28,7 @@ def test_schreibeKuerzen() -> None:
     assert "<mfrac><mn>6</mn><mn>8</mn></mfrac><mo>=</mo><mfrac><mn>3</mn><mn>4</mn></mfrac>" == mathehelfer.schreibeKuerzen(Bruch(6,8))
 
 def test_vonBruchZuDezimalzahl() -> None:
-    assert "<mfrac><mn>3</mn><mn>4</mn></mfrac><mo>=</mo><mn>0.75</mn>" == mathehelfer.vonBruchZuDezimalzahl(Bruch(3,4))
+    assert "<mfrac><mn>3</mn><mn>4</mn></mfrac><mo>=</mo><mn>0.75</mn>" == mathehelfer.schreibeBruchZuDezimalzahl(Bruch(3,4))
 
 def test_vonDezimalzahlZuBruch() -> None:
     assert "<mn>0.25</mn><mo>=</mo><mfrac><mn>25</mn><mn>100</mn></mfrac>" == mathehelfer.vonDezimalzahlZuBruch(Dezimalzahl(0.25))

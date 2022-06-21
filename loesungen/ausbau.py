@@ -1,7 +1,7 @@
 # Ab hier bitte nichts ändern!
 from __future__ import annotations
 
-from datenstrukturen import Bruch
+from datenstrukturen import Bruch, Dezimalzahl
 import mathefunktionen
 
 # Ab hier dürft ihr Änderungen vornehmen.
@@ -14,6 +14,14 @@ def erweitereBruch(bruch: Bruch, faktor: int) -> Bruch:
     neuerBruch = Bruch(neuerZaehler, neuerNenner)
     return neuerBruch
 
+def berechneKehrwert(bruch: Bruch) -> Bruch:
+    alterZaehler = bruch.zaehler
+    alterNenner = bruch.nenner
+    neuerZaehler = alterNenner
+    neuerNenner = alterZaehler
+    kehrwert = Bruch(neuerZaehler, neuerNenner)
+    return kehrwert
+
 def kuerzeBruch(bruch: Bruch) -> Bruch:
     alterZaehler = bruch.zaehler
     alterNenner = bruch.nenner
@@ -23,7 +31,19 @@ def kuerzeBruch(bruch: Bruch) -> Bruch:
     neuerBruch = Bruch(neuerZaehler, neuerNenner)
     return neuerBruch
 
+def wandleBruchZuDezimalzahl(bruch: Bruch) -> Dezimalzahl:
+    zaehler = bruch.zaehler
+    nenner = bruch.nenner
+    kommazahl = zaehler / nenner
+    dezimalzahl = Dezimalzahl(kommazahl)
+    return dezimalzahl
 
+def wandleDezimalzahlZuBruch(dezimalzahl: Dezimalzahl) -> Bruch:
+    dezimalwert = dezimalzahl.kommazahl
+    neuerNenner = mathefunktionen.berechne_ZehnerPotenz(dezimalwert)
+    neuerZaehler = int(dezimalwert * neuerNenner)
+    neuerBruch = Bruch(neuerZaehler, neuerNenner)
+    return neuerBruch
 
 # Funktionen für MathML
 
@@ -34,6 +54,12 @@ def schreibeBruch(bruch: Bruch) -> str:
     ergebnis = ergebnis + "<mn>" + zaehlerAlsString + "</mn>"
     ergebnis = ergebnis + "<mn>" + nennerAlsString + "</mn>"
     ergebnis = ergebnis + "</mfrac>"
+    return ergebnis
+
+def schreibeDezimalzahl(dezimalzahl: Dezimalzahl) -> str:
+    dezimalwert = dezimalzahl.kommazahl
+    zahlAlsString = str(dezimalwert)
+    ergebnis = "<mn>" + zahlAlsString + "</mn>"
     return ergebnis
 
 def schreibeErweitern(bruch: Bruch, faktor: int) -> str:
@@ -50,6 +76,19 @@ def schreibeKuerzen(bruch: Bruch) -> str:
     ergebnis = textUngekuerzt + "<mo>=</mo>" + textGekuerzt
     return ergebnis
 
+def schreibeBruchZuDezimalzahl(bruch: Bruch) -> str:
+    dezimalzahl = wandleBruchZuDezimalzahl(bruch)
+    textBruch = schreibeBruch(bruch)
+    textDezimalzahl = schreibeDezimalzahl(dezimalzahl)
+    ergebnis = textBruch + "<mo>=</mo>" + textDezimalzahl
+    return ergebnis
+
+def vonDezimalzahlZuBruch(dezimalzahl: Dezimalzahl) -> str:
+    bruch = wandleDezimalzahlZuBruch(dezimalzahl)
+    textBruch = schreibeBruch(bruch)
+    textDezimalzahl = schreibeDezimalzahl(dezimalzahl)
+    ergebnis = textDezimalzahl + "<mo>=</mo>" + textBruch
+    return ergebnis
 
 # In dieser Funktion darf ausprobiert werden.
 
@@ -66,5 +105,12 @@ def schreibeMathML() -> str:
     bruch = Bruch(6,8)
     inhalt = inhalt + "\n\t\t<p><math>"
     inhalt = inhalt + schreibeKuerzen(bruch)
+    inhalt = inhalt + "</math></p>"
+    bruch = Bruch(3,4)
+    inhalt = inhalt + "\n\t\t<p><math>"
+    inhalt = inhalt + schreibeBruchZuDezimalzahl(bruch)
+    inhalt = inhalt +  "</math></p>"
+    inhalt = inhalt + "\n\t\t<p><math>"
+    inhalt = inhalt + vonDezimalzahlZuBruch(Dezimalzahl(0.8))
     inhalt = inhalt + "</math></p>"
     return inhalt
