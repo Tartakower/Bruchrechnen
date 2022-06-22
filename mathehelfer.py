@@ -6,20 +6,20 @@ import mathefunktionen
 
 # Ab hier dürft ihr Änderungen vornehmen.
 
-def erweitereBruch(bruch: Bruch, faktor: int) -> Bruch:
-    alterZaehler = bruch.zaehler
-    alterNenner = bruch.nenner
-    neuerZaehler = alterZaehler * faktor
-    neuerNenner = alterNenner * faktor
-    neuerBruch = Bruch(neuerZaehler, neuerNenner)
-    return neuerBruch
-
 def kuerzeBruch(bruch: Bruch) -> Bruch:
     alterZaehler = bruch.zaehler
     alterNenner = bruch.nenner
     ggT = mathefunktionen.berechne_ggT(alterZaehler, alterNenner)
     neuerZaehler = alterZaehler // ggT
     neuerNenner = alterNenner // ggT
+    neuerBruch = Bruch(neuerZaehler, neuerNenner)
+    return neuerBruch
+
+def erweitereBruch(bruch: Bruch, faktor: int) -> Bruch:
+    alterZaehler = bruch.zaehler
+    alterNenner = bruch.nenner
+    neuerZaehler = alterZaehler * faktor
+    neuerNenner = alterNenner * faktor
     neuerBruch = Bruch(neuerZaehler, neuerNenner)
     return neuerBruch
 
@@ -45,18 +45,18 @@ def schreibeBruch(bruch: Bruch) -> str:
     ergebnis = ergebnis + "</mfrac>"
     return ergebnis
 
-def schreibeErweitern(bruch: Bruch, faktor: int) -> str:
-    bruchErweitert = erweitereBruch(bruch, faktor)
-    textAlterBruch = schreibeBruch(bruch)
-    textNeuerBruch = schreibeBruch(bruchErweitert)
-    ergebnis = textAlterBruch + "<mo>=</mo>" + textNeuerBruch
-    return ergebnis
-
 def schreibeKuerzen(bruch: Bruch) -> str:
     bruchGekuerzt = kuerzeBruch(bruch)
     textUngekuerzt = schreibeBruch(bruch)
     textGekuerzt = schreibeBruch(bruchGekuerzt)
     ergebnis = textUngekuerzt + "<mo>=</mo>" + textGekuerzt
+    return ergebnis
+
+def schreibeErweitern(bruch: Bruch, faktor: int) -> str:
+    bruchErweitert = erweitereBruch(bruch, faktor)
+    textAlterBruch = schreibeBruch(bruch)
+    textNeuerBruch = schreibeBruch(bruchErweitert)
+    ergebnis = textAlterBruch + "<mo>=</mo>" + textNeuerBruch
     return ergebnis
 
 def schreibeMultiplikation(erster_faktor: Bruch, zweiter_faktor: Bruch) -> str:
@@ -75,12 +75,17 @@ def schreibeMathML() -> str:
     inhalt = inhalt + "\n\t\t<p><math>"
     inhalt = inhalt + schreibeBruch(bruch)
     inhalt = inhalt + "</math></p>"
+    bruch = Bruch(6,8)
+    inhalt = inhalt + "\n\t\t<p><math>"
+    inhalt = inhalt + schreibeKuerzen(bruch)
+    inhalt = inhalt + "</math></p>"
     bruch = Bruch(3,4)
     inhalt = inhalt + "\n\t\t<p><math>"
     inhalt = inhalt + schreibeErweitern(bruch, 3)
     inhalt = inhalt + "</math></p>"
-    bruch = Bruch(6,8)
+    erster_faktor = Bruch(3,4)
+    zweiter_faktor = Bruch(2,3)
     inhalt = inhalt + "\n\t\t<p><math>"
-    inhalt = inhalt + schreibeKuerzen(bruch)
+    inhalt = inhalt + schreibeMultiplikation(erster_faktor, zweiter_faktor)
     inhalt = inhalt + "</math></p>"
     return inhalt

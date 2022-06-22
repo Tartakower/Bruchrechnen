@@ -15,7 +15,7 @@
 \subsection*{Die Funktion zum Erweitern}
 
 \begin{codePython}
-def erweitereBruch(bruch, faktor):
+def erweitereBruch(bruch: Bruch, faktor: int) -> Bruch:
 	alterZaehler = bruch.zaehler
 	alterNenner = bruch.nenner
 	neuerZaehler = alterZaehler * faktor

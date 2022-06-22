@@ -1,31 +1,72 @@
-\section{Aufgabe: Das Kürzen eines Bruchs}
+\section{Beispiel: Das Kürzen eines Bruchs}
 
-\subsection*{Der Algorithmus}
+Im folgenden Beispiel lernst du das Programmieren einer Funktion in Python.
 
-Wie lautet der Algorithmus zum Kürzen eines Bruchs?
+\subsection*{Aufgabe: Der Algorithmus zum Kürzen eines Bruchs}
 
-{\huge
+Lies den Algorithmus zum Kürzen eines Bruchs durch:
+
 \begin{itemize}
-	\item Nimm einen Bruch entgegen. 
-	\item  
-	\item  
-	\item  
-	\item  
-	\item  
+	\item Nimm einen Bruch.
+	\item Merke dir den Zähler des Bruchs in einer Variablen.
+	\item Verfahre ebenso mit dem Nenner.
+	\item Berechne den größten gemeinsamen Teiler (ggT) von Zähler und Nenner. Es gibt dafür eine fertige Funktion.
+	\item Berechne den gekürzten Zähler, indem du den alten Zähler durch den ggT teilst. 
+	\item Berechne ebenso den gekürzten Nenner.
+	\item Erstelle einen neuen Bruch aus dem gekürzten Zähler und dem gekürzten Nenner.
+	\item Gib den neuen Bruch zurück.
 \end{itemize}
-}
+
+Verstehst du das Vorgehen? Andernfalls stelle deine Fragen dem Betreuer.
 
 \subsection*{Die Funktion zum Kürzen von Brüchen}
 
-Wie lautet die Funktion?
+Die Berechnung des ggT erfolgt mittels der Funktion
+\begin{quote}
+\texttt{mathefunktionen.berechne\_ggT}.
+\end{quote}
+In der Funktion zum Kürzen wird also eine Zeile enthalten sein:
 
-Vermutlich benötigst du eine Funktion zur Berechnung des größten gemeinsamen Teilers von zwei Zahlen. Diese findest du bei den mathematischen Hilfsfunktionen.
+\begin{codePython}
+ggT = mathefunktionen.berechne_ggT(alterZaehler, alterNenner)
+\end{codePython}
+
+Beachte, dass beim Teilen durch den ggT die Division \texttt{//} benutzt wird, damit der neue Zähler und der neue Nenner ganze Zahlen werden!
 
 \begin{codePython}
 def kuerzeBruch(bruch: Bruch) -> Bruch:
+	alterZaehler = bruch.zaehler
+	alterNenner = bruch.nenner
+	ggT = mathefunktionen.berechne_ggT(alterZaehler, alterNenner)
+	neuerZaehler = alterZaehler // ggT
+	neuerNenner = alterNenner // ggT
+	neuerBruch = Bruch(neuerZaehler, neuerNenner)
+	return neuerBruch
 \end{codePython}
 
+\subsection*{Aufgabe: Programmieren der Funktion}
+
+Gib die Funktion in den Editor der Entwicklungsumgebung (IDE) ein. Zeigt die IDE noch Fehler an? Vielleicht hast du dich vertippt? Falls du den Fehler nicht finden kannst, sprich den Betreuer an.
 
 \subsection*{Überprüfung des Ergebnisses}
 
-Überprüfe das Ergebnis in der Datei \texttt{spielwiese.py}.
+Wir überprüfen das Ergebnis mit Hilfe folgender Datei:
+\begin{quote}
+\texttt{uebungsplatz.py}
+\end{quote}
+
+Wir tragen dort die folgenden Zeilen ein:
+
+\begin{codePython}
+bruch = Bruch(6,8)
+gekuerzter_bruch = mathehelfer.kuerzeBruch(bruch)
+print(gekuerzter_bruch)
+\end{codePython}
+
+Jetzt führen wir \texttt{uebungsplatz.py} als Python-Skript aus. Das Ergebnis sollte jetzt diese Zeile enthalten:
+\begin{quote}
+\texttt{Bruch(zaehler=3, nenner=4)}
+\end{quote}
+
+Sieht das Ergebnis bei dir genauso aus?
+

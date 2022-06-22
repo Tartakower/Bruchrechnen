@@ -1,1 +1,91 @@
 \section{Lösung: Das Multiplizieren von Brüchen}
+
+\subsection*{Der Algorithmus zum Multiplizieren von Brüchen}
+
+\begin{itemize}
+	\item Nimm zwei Brüche entgegen.
+	\item Merke dir den Zähler des ersten Bruchs in einer Variablen.
+	\item Merke dir den Nenner des ersten Bruchs in einer zeiten Variablen.
+	\item Verfahre ebenso mit dem zweiten Bruch. Bisher hast du vier Variablen.
+	\item Multipliziere die beiden Zähler-Variablen und merke dir das Ergebnis in einer Variablen.
+	\item Multipliziere die beiden Nenner-Variablen.
+	\item Erzeuge einen Bruch aus den Produkten der Zähler und der Nenner und merke dir das Ergebnis in einer Variablen. 
+	\item Wichtig! Kürze den soeben erstellten Bruch.
+	\item Gib den neuen, gekürzten Bruch zurück.
+\end{itemize}
+
+\subsection*{Die Funktion zum zum Multiplizieren von Brüchen}
+
+\begin{codePython}
+def multipliziereBrueche(erster_faktor: Bruch, zweiter_faktor: Bruch) -> Bruch:
+	erster_zaehler = erster_faktor.zaehler
+	erster_nenner = erster_faktor.nenner
+	zweiter_zaehler = zweiter_faktor.zaehler
+	zweiter_nenner = zweiter_faktor.nenner
+	produkt_zaehler = erster_zaehler * zweiter_zaehler
+	produkt_nenner = erster_nenner * zweiter_nenner
+	produkt = Bruch(produkt_zaehler, produkt_nenner)
+	produkt = kuerzeBruch(produkt)
+	return produkt
+\end{codePython}
+
+\subsection*{Überprüfung der Funktion}
+
+Ergänze in der Datei \texttt{uebungsplatz.py}:
+
+\begin{codePython}
+	erster_faktor = Bruch(3,4)
+	zweiter_faktor = Bruch(2,3)
+	produkt = mathehelfer.multipliziereBrueche(erster_faktor, zweiter_faktor)
+	print("Produkt: " + str(produkt))
+\end{codePython}
+
+Führe \texttt{uebungsplatz.py} als Python-Skript aus. Die Ausgabe muss folgende Zeile enthalten:
+\begin{quote}
+	Produkt: Bruch(zaehler=1, nenner=2)
+\end{quote}
+
+\subsection*{Der Algorithmus zur Darstellung der Multiplikationsformel}
+
+\begin{itemize}
+	\item Nimm zwei Brüche entgegen.
+	\item Berechne das Produkt der beiden Brüche mit der Funktion \texttt{multipliziereBrueche}.
+	\item Erstelle für den ersten Bruch die MathML-Darstellung.
+	\item Erstelle für den zweiten Bruch die MathML-Darstellung.
+	\item Erstelle für das Produkt die MathML-Darstellung.
+	\item Setze jetzt den MathML-Text aus den drei MathML-Texten der Brüche zusammen.
+	\item Zwischen dem ersten und dem zweiten Bruch steht noch das Multiplikationszeichen.
+	\item Zwischen dem zweiten Bruch und dem Produkt steht das Gleichheitszeichen.
+	\item Gib den gesamten MathML-Text zurück.
+\end{itemize}
+
+\subsection*{Die Funktion zur Darstellung der Multiplikationsformel}
+
+\begin{codePython}
+def schreibeMultiplikation(erster_faktor: Bruch, zweiter_faktor: Bruch) -> str:
+	text_erster_faktor = schreibeBruch(erster_faktor)
+	text_zweiter_faktor = schreibeBruch(zweiter_faktor)
+	produkt = multipliziereBrueche(erster_faktor, zweiter_faktor)
+	text_produkt = schreibeBruch(produkt)
+	ergebnis = text_erster_faktor + "<mo>&middot;</mo>" + text_zweiter_faktor + "<mo>=</mo>" + text_produkt
+	return ergebnis
+\end{codePython}
+
+\subsection*{Überprüfung der Darstellung}
+
+Ergänze in der Funktion \texttt{mathehelfer.schreibeMathML()} die Zeilen für das Multiplizieren:
+
+\begin{codePython}
+erster_faktor = Bruch(3,4)
+zweiter_faktor = Bruch(2,3)
+inhalt = inhalt + "\n\t\t<p><math>"
+inhalt = inhalt + schreibeMultiplikation(erster_faktor, zweiter_faktor)
+inhalt = inhalt + "</math></p>"
+\end{codePython}
+
+Führe die Datei \texttt{htmlErzeugung.py} aus.
+
+Prüfe im Firefox-Browser, wie die Datei \texttt{index.html} aussieht. Dort sollte eine Zeile stehen, die so aussieht:
+\[
+\frac{3}{4} \cdot \frac{2}{3} = \frac{1}{2}
+\]

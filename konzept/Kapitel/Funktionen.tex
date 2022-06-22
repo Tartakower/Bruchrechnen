@@ -7,60 +7,56 @@ Eine Funktion ist ein kleines Teilprogramm, das eine spezifische Aufgabe löst. 
 	\item Die Funktion gibt das Ergebnis der Berechnung zurück.
 \end{itemize}
 
-Für bestimmte Eingabewerte erhält man immer dasselbe Ergebnis. Die Eingabewerte heißen Parameter. Die Anzahl und der Typ der Parameter ist festgelegt.
+Für bestimmte Eingabewerte erhält man immer dasselbe Ergebnis. Die Eingabewerte heißen Parameter. Es kann einen oder mehrere Parameter geben, manchmal sogar gar keinen.
 
 \subsection*{Der Aufbau einer Funktion in Python}
 
 Der Aufbau einer Funktion orientiert sich an den drei Schritte, die wir eben kennen gelernt haben:
 \begin{itemize}
-	\item Die Signaturzeile nennt den Namen und beschreibt die Parameter.
-	\item Der Rumpf der Funktion ist eingerückt. Hier wird die Berechnung durchgeführt.
-	\item Die letzte Zeile im Rumpf gibt das Ergebnis zurück. Sie beginnt mit dem Wort \texttt{return}.
+	\item die Signaturzeile
+	\item der Rumpf der Funktion 
+	\item der Rückgabewert
 \end{itemize}
 
-\subsection*{Eine Beispielfunktion: Das Erweitern eines Bruchs}
-\label{sec:FunktionErweitern}
+\subsection*{Die Signaturzeile}
 
-In \ref{sec:Algorithmus} haben wir den Algorithmus zum Erweitern eines Bruchs formuliert:
-\begin{itemize}
-	\item Nimm einen Bruch und den Faktor, mit dem du den Bruch erweitern willst.
-	\item Merke dir den Zähler und den Nenner des Bruchs jeweils in einer Variablen.
-	\item Multipliziere die Variable für den Zähler mit dem Erweiterungsfaktor.
-	\item Verfahre genauso mit dem Nenner.
-	\item Erstelle einen neuen Bruch mit dem neuen Zähler und dem neuen Nenner.
-\end{itemize}
-
-In Python lautet die Funktion für das Erweitern:
+Die Signaturzeile nennt den Namen und beschreibt die Parameter.
 \begin{codePython}
-def erweitereBruch(bruch, faktor):
-	alterZaehler = bruch.zaehler
-	alterNenner = bruch.nenner
-	neuerZaehler = alterZaehler * faktor
-	neuerNenner = alterNenner * faktor
-	neuerBruch = Bruch(neuerZaehler, neuerNenner)
-	return neuerBruch
+def kuerzeBruch(bruch):
 \end{codePython}
+
+\begin{itemize}
+	\item Zuerst steht immer das Wort \texttt{def}.
+	\item Dann folgt der Name der Funktion. Der Name sollte ausdrücken, welche Berechnung die Funktion durchführt.
+	\item In den runden Klammer stehen die Eingabewerte für die Funktion. Hier ist es ein Parameter mit dem Namen \texttt{bruch}. Die Funktion kann den Wert des Parameters für die Berechnung nutzen.
+\end{itemize}
 
 \subsection*{Tipp: Datentypen angeben}
 
 Wer möchte, kann die Typen der Parameter und des Ergebnisses angeben. Es hilft, Fehler zu vermeiden. Programmierprofis tun das.
 
-Die Signaturzeile für die Funktion zum Erweitern lautet dann:
+Die Signaturzeile für die Funktion zum Kürzen lautet dann:
 
-\begin{codePython}
-def erweitereBruch(bruch: Bruch, faktor: int) -> Bruch:
-\end{codePython}
+\lstset{style=syntaxPython}
+\begin{lstlisting}
+def kuerzeBruch(bruch: Bruch) -> Bruch:
+\end{lstlisting}
 
-Der Rumpf bleibt unverändert.
+Die Funktion nimmt also einen Parameter entgegen, dessen Name \texttt{bruch} lautet (klein geschrieben!) und dessen Datentyp ein \texttt{Bruch} ist (groß geschrieben!).
 
-\subsection*{Eine Funktion verwenden}
+Die Funktion führt eine Berechnung durch, bei der ein Rückgabewert berechnet wird, der vom Datentyp \texttt{Bruch} ist. Das steht hier: \texttt{-> Bruch}.
 
-Eine Funktion kann beliebig oft verwendet werden. Oft benutzen wir anstatt „verwenden“ die Formulierung „die Funktion wird aufgerufen“. In der Regel lässt man sich für verschiedene Parameterwerte das jeweilige Ergebnis berechnen.
+\subsection*{Der Rumpf einer Funktion}
 
-\begin{codePython}
-bruch_2 = Bruch(1,2)
-bruch_3 = erweitereBruch(bruch_2, 5)
-\end{codePython}
+Der Rumpf der Funktion ist eingerückt. Wir benutzen dafür vier Leerzeichen.
 
-Wir können eine Funktion auch innerhalb einer anderen Funktion aufrufen. Das ist sehr hilfreich. Dann kann sich eine Funktion für die Berechnung von Zwischenschritte die Hilfe einer anderen Funktion holen.
+Hier wird die Berechnung durchgeführt. Das erklären wir ausführlich im nächsten Beispiel.
+
+
+\subsection*{Der Rückgabewert}
+
+Die letzte Zeile im Rumpf gibt das Ergebnis zurück. Sie beginnt mit dem Wort
+\begin{quote}
+\texttt{return}
+\end{quote}
 
