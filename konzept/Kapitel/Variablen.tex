@@ -30,20 +30,20 @@ Ein Bruch ist ein Wert, der sich aus zwei Teilwerten zusammensetzt, nämlich dem
 
 \lstset{style=syntaxPython}
 \begin{lstlisting}
-bruch_1 = Bruch(3,4)
+bruch = Bruch(3,4)
 \end{lstlisting}
 
 Jetzt können wir die Variable, die ja einen Bruch enthält, nach dem Zähler und dem Nenner fragen. Wir schreiben die beiden Werte in eigene Variablen.
 
 \begin{lstlisting}
-zaehler_1 = bruch_1.zaehler
-nenner_1 = bruch_1.nenner
+zaehler = bruch.zaehler
+nenner = bruch.nenner
 \end{lstlisting}
 
 Wir können auch zwei Ganzzahlen jeweils in eine Variable schreiben und damit eine Bruchvariable erzeugen.
 
 \begin{lstlisting}
-zaehler_2 = 7
-nenner_2 = 8
-bruch_2 = Bruch(zaehler_2, nenner_2)
+neuer_zaehler = 7
+neuer_nenner = 8
+bruch = Bruch(neuer_zaehler, neuer_nenner)
 \end{lstlisting}

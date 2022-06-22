@@ -1,31 +1,43 @@
 \section{Aufgabe: Das Multiplizieren von Brüchen}
 
-\subsection*{Der Algorithmus}
+\subsection*{Der Algorithmus zum Multiplizieren von Brüchen}
 
-Wie lautet der Algorithmus zum Kürzen eines Bruchs?
+Wie lautet der Algorithmus zum Multiplizieren von Brüchen?
 
-{\huge
-\begin{itemize}
-	\item Nimm einen Bruch entgegen. 
+\begin{itemize}[itemsep=2ex]
+	\item Nimm zwei Brüche entgegen.
+	\item 
+	\item 
+	\item 
+	\item 
+	\item 
 	\item  
-	\item  
-	\item  
-	\item  
-	\item  
+	\item 
+	\item 
 \end{itemize}
-}
 
-\subsection*{Die Funktion zum Kürzen von Brüchen}
+Hast du daran gedacht, den neuen Bruch zu kürzen?
+
+\subsection*{Die Funktion zum Multiplizieren von Brüchen}
 
 Wie lautet die Funktion?
 
-Vermutlich benötigst du eine Funktion zur Berechnung des größten gemeinsamen Teilers von zwei Zahlen. Diese findest du bei den mathematischen Hilfsfunktionen.
+\subsection*{Überprüfung der Funktion zum Multiplizieren}
+
+Wir möchten in der Datei
+\begin{quote}
+	\texttt{uebungsplatz.py}
+\end{quote}
+die beiden Brüche $\frac{3}{4}$ und $\frac{2}{3}$ miteinander multiplizieren. Es beginnt also mit
 
 \begin{codePython}
-	def kuerzeBruch(bruch: Bruch) -> Bruch:
+erster_faktor = Bruch(3,4)
+zweiter_faktor = Bruch(2,3)
 \end{codePython}
 
+Wie geht es weiter?
 
-\subsection*{Überprüfung des Ergebnisses}
-
-Überprüfe das Ergebnis in der Datei \texttt{spielwiese.py}.
+Führe \texttt{uebungsplatz.py} als Python-Skript aus. Die Ausgabe muss folgende Zeile enthalten:
+\begin{quote}
+	Produkt: Bruch(zaehler=1, nenner=2)
+\end{quote}
