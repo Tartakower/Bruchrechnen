@@ -1,49 +1,62 @@
-\section{Aufgabe: Die Formel zum Kürzen eines Bruchs in MathML}
+\section{Beispiel: Die Formel zum Kürzen eines Bruchs in MathML}
 
 \subsection*{Die Vorarbeiten}
 
-Hast du die Funktion zum Kürzen eines Bruchs bereit? Wie heißt sie?
-
-Außerdem benötigst du wieder die Funktion zur Darstellung eines Bruchs in MathML.
-
-\subsection*{Der Algorithmus}
-
-Wie lautet der Algorithmus für die Formeldarstellung des Kürzens?
-
-{\huge
 \begin{itemize}
-	\item Nimm einen Bruch entgegen. 
-	\item  
-	\item  
-	\item  
-	\item  
-	\item  
+	\item Wir verfügen über die Funktion \texttt{kuerzeBruch}. (siehe \ref{sec:FunktionKuerzen})
+	\item Außerdem haben wir die Funktion \texttt{schreibeBruch}, die einen Bruch in MathML darstellt. (siehe \ref{sec:MathMLBruch})
 \end{itemize}
-}
 
+\subsection*{Die Algorithums zur Darstellung der Formel zum Kürzen}
 
-\subsection*{Die Funktion}
+\begin{itemize}
+	\item Nimm einen Bruch.
+	\item Erzeuge aus diesem Bruch einen gekürzten Bruch. Verwende dazu die Funktion, die du gerade programmiert hast.
+	\item Erzeuge aus dem ursprünglichen Bruch die Beschreibung in MathML. Verwende dazu die Funktion, die einen Bruch in MathML beschreibt.
+	\item Erzeuge aus dem gekürzten Bruch ebenfalls die Beschreibung in MathML. Das geht genauso wie eben.
+	\item Setze jetzt den MathML-Text aus den einzelnen Angaben zusammen.
+	\item Die Zeichenkette beginnt mit dem MathML-Text für den ungekürzten Bruch.
+	\item Dann kommt das Gleichheitszeichen.
+	\item Es folge der MathML-Text für den gekürzten Bruch.
+\end{itemize}
 
-Die Signatur der Funktion lautet:
+\subsection*{Die Funktion zur Darstellung der Formel zum Kürzen}
 
 \begin{codePython}
 def schreibeKuerzen(bruch: Bruch) -> str:
+	bruchGekuerzt = kuerzeBruch(bruch)
+	textUngekuerzt = schreibeBruch(bruch)
+	textGekuerzt = schreibeBruch(bruchGekuerzt)
+	ergebnis = textUngekuerzt + "<mo>=</mo>" + textGekuerzt
+	return ergebnis
 \end{codePython}
-
-Wie geht es weiter?
 
 \subsection*{Überprüfung des Ergebnisses}
 
-Überprüfe das Ergebnis in der Datei \texttt{uebungsplatz.py}. Der Bruch $\frac{6}{8}$ muss gekürzt den Bruch $\frac{3}{4}$ ergeben.
+Überprüfe das Ergebnis in der Datei \texttt{uebungsplatz.py}. 
+
+\lstset{style=syntaxPython}
+\begin{lstlisting}
+bruch = Bruch(6,8)
+formel = schreibeKuerzen(bruch)
+print(formel)
+\end{lstlisting}
+
+Der Bruch $\frac{6}{8}$ muss gekürzt den Bruch $\frac{3}{4}$ ergeben. In einer Zeile steht:
 
 \begin{codeHTML}
 <mfrac><mn>6</mn><mn>8</mn></mfrac><mo>=</mo>
-	<mfrac><mn>3</mn><mn>4</mn></mfrac>
+								<mfrac><mn>3</mn><mn>4</mn></mfrac>
 \end{codeHTML}
 
-\subsection*{Darstellung der Formel im Browser}
+Ergänze in der Funktion \texttt{schreibeMathML()} die Zeilen für Kürzen für den Bruch $\frac{6}{8}$.
 
-Ergänze in der Funktion \texttt{schreibeMathML()} die Zeilen für Kürzen für den Bruch $\frac{6}{8}$ analog zum Erweitern.
+\begin{codePython}
+bruch = Bruch(6,8)
+inhalt = inhalt + "\n\t\t<p><math>"
+inhalt = inhalt + schreibeKuerzen(bruch)
+inhalt = inhalt + "</math></p>"
+\end{codePython}
 
 Führe die Datei \texttt{htmlErzeugung.py} aus.
 

@@ -1,10 +1,72 @@
-\section{Beispiel: Die Formel zum Erweitern eines Bruchs in MathML}
+\section{Aufgabe: Die Formel zum Erweitern eines Bruchs in MathML}
 
 \subsection*{Erledigte Vorarbeiten}
 
-\begin{itemize}
-	\item Wir verfügen über die Funktion \texttt{erweitereBruch}, die zu einem übergebenen Bruch und einem Faktor den erweiterten Bruch berechnet. (siehe \ref{sec:FunktionErweitern})
-	\item Außerdem haben wir die Funktion \texttt{schreibeBruch}, die einen Bruch in MathML darstellt. (siehe \ref{sec:MathMLBruch})
+Welche bereits erstellten Funktionen können wir sinnvoll nutzen?
+
+\begin{itemize}[itemsep=2ex]
+	\item 
+	\item
 \end{itemize}
 
-\input{./Kapitel/MathMLErweitern}
+\subsection*{Der Algorithmus zur Darstellung der Erweiterungsformel in MathML}
+
+Wie lautet der Algorithmus?
+
+\begin{itemize}[itemsep=2ex]
+	\item Nimm einen Bruch und einen Faktor zur Erweiterung entgegen.
+	\item 
+	\item 
+	\item 
+	\item 
+	\item 
+	\item 
+	\item 
+\end{itemize}
+
+\subsection*{Die Funktion zur Darstellung der Formel in MathML}
+
+Wie lautet die Funktion? Die Signatur sieht so aus:
+
+\lstset{style=syntaxPython}
+\begin{lstlisting}
+def schreibeErweitern(bruch: Bruch, faktor: int) -> str:
+\end{lstlisting}
+
+Wie geht es weiter?
+
+\subsection*{Überprüfung des Ergebnisses}
+
+Überprüfe das Ergebnis in der Datei
+\begin{quote}
+	\texttt{uebungsplatz.py}.
+\end{quote}
+Wir erweitern beispielsweise den Bruch $\frac{3}{4}$ mit dem Faktor 3.
+
+\begin{codePython}
+bruch = Bruch(2,3)
+faktor = 3
+\end{codePython}
+
+Wie geht es weiter? Wie sieht das Ergebnis aus?
+
+\subsection*{Darstellung der Formel im Browser}
+
+Wir können die Formel automatisch in die HTML-Seite übertragen lassen und anschließend im Browser anschauen.
+
+Ergänze in der Funktion
+\begin{quote}
+	\texttt{schreibeMathML()}
+\end{quote}
+die entsprechenden Zeilen analog zum Beispiel Kürzen.
+
+
+Dann führe die Datei
+\begin{quote}
+\texttt{htmlErzeugung.py}
+\end{quote} als Python-Skript aus.
+
+Prüfe im Firefox-Browser, wie die Datei \texttt{index.html} aussieht. Dort sollte eine Zeile stehen, die so aussieht:
+\[
+\frac{3}{4} = \frac{9}{12}
+\]
