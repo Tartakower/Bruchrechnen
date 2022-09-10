@@ -7,7 +7,7 @@
 	\item Außerdem haben wir die Funktion \texttt{schreibeBruch}, die einen Bruch in MathML darstellt. (siehe \ref{sec:MathMLBruch})
 \end{itemize}
 
-\subsection*{Die Algorithums zur Darstellung der Formel zum Kürzen}
+\subsection*{Der Algorithmus zur Darstellung der Formel zum Kürzen}
 
 \begin{itemize}
 	\item Nimm einen Bruch.
@@ -22,6 +22,8 @@
 
 \subsection*{Die Funktion zur Darstellung der Formel zum Kürzen}
 
+In der Datei \textbf{\texttt{mathehelfer.py}} programmieren wir folgende Funktion:
+
 \begin{codePython}
 def schreibeKuerzen(bruch: Bruch) -> str:
 	bruchGekuerzt = kuerzeBruch(bruch)
@@ -33,12 +35,12 @@ def schreibeKuerzen(bruch: Bruch) -> str:
 
 \subsection*{Überprüfung des Ergebnisses}
 
-Überprüfe das Ergebnis in der Datei \texttt{uebungsplatz.py}. 
+Überprüfe das Ergebnis in der Datei \textbf{\texttt{uebungsplatz.py}}.
 
 \lstset{style=syntaxPython}
 \begin{lstlisting}
 bruch = Bruch(6,8)
-formel = schreibeKuerzen(bruch)
+formel = mathehelfer.schreibeKuerzen(bruch)
 print(formel)
 \end{lstlisting}
 
@@ -48,6 +50,8 @@ Der Bruch $\frac{6}{8}$ muss gekürzt den Bruch $\frac{3}{4}$ ergeben. In einer 
 <mfrac><mn>6</mn><mn>8</mn></mfrac><mo>=</mo>
 								<mfrac><mn>3</mn><mn>4</mn></mfrac>
 \end{codeHTML}
+
+Jetzt arbeiten wir wieder in der Datei \textbf{\texttt{mathehelfer.py}}.
 
 Ergänze in der Funktion \texttt{schreibeMathML()} die Zeilen für Kürzen für den Bruch $\frac{6}{8}$.
 
