@@ -1,32 +1,31 @@
 \section{Technische Rahmenbedingungen}
 
-\subsection{Hardware und Betriebssystem}
+\subsection*{Hardware und Betriebssystem}
 
 Die Beispiele wurden auf einem Raspberry Pi, Version 4, mit 8 GB Ram entwickelt. Damit lässt sich stabil und flüssig arbeiten.
 
 Vermutlich reicht ein Raspi 4 mit mindestens 2 GB Ram aus.
 
-Ein Raspi 3 mit 1 GB Ram läuft nicht mehr performant mit einer anspruchsvollen IDE wie z.B. VS Code oder Pydev.
+Ein Raspi 3 mit 1 GB Ram läuft nicht mehr performant mit einer anspruchsvollen IDE wie z.B. VS Code.
 
-Als Betriebssystem wurden verschiedene Debian-/Ubuntu-Derivate für arm64-Prozessoren genutzt. Diese arbeiten stabil und flüssig.
+Als Betriebssystem wurden verschiedene Debian-/Ubuntu-Derivate für arm64-Prozessoren genutzt. Diese arbeiten stabil und flüssig. Unter Windows oder MacOS sollte alles genauso gut klappen.
 
-\subsection{Programmiersprache}
+\subsection*{Programmiersprache}
 
 Der Mathehelfer Bruchrechnen wird in Python programmiert. Da die Klasse für Brüche als Dataclass definiert werden, ist mindestens Version 3.7 erforderlich. Jede aktuelle Linux-Distribution enthält diese oder eine neuere Python-Version.
 
-\subsection{IDE}
+\subsection*{IDE}
 
 Für Python existieren viele verschiedene Entwicklungsumgebungen. Um eine sinnvolle Unterstützung durch Code-Vervollständigung zu erhalten, sind folgende IDEs geeignet:
 \begin{itemize}
 	\item Visual Studio Code (Python-Plugin, Pylance-Plugin von Microsoft)
+	\item Pycharm
 	\item eclipse mit dem Pydev-Plugin
 \end{itemize}
 
-Für Pycharm existiert zum jetzigen Zeitpunkt (Sommer 2022) keine seriöse Quelle für arm-Prozessoren. Für amd64-Prozessoren ist Pycharm sehr empfehlenswert.
-
 Die Online-IDE repl.it funktioniert ebenfalls gut. Allerdings ist der Vorteil der fehlenden Installation gegenüber der Online-Abhängigkeit abzuwägen.
 
-\subsection{Browser}
+\subsection*{Browser}
 
 MathML wird aktuell unmittelbar nur von Firefox dargestellt.
 
