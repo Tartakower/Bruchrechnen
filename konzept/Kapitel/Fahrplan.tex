@@ -1,0 +1,23 @@
+\begin{figure}[htbp]
+	\centering
+	
+	\begin{tikzpicture}
+		\node (term)  		at (-1,4) [draw] {Term};
+		\node (zahl) 		at (-4,2) [draw] {Zahl};
+		\node (bruch) 		at (-6,0) [draw] {Bruch};
+		\node (kommazahl) 	at (-2,0) [draw] {Kommazahl};
+		\node (rechenterm)  at (2,2)  [draw] {Rechenterm};
+		
+		\draw (node cs:name=bruch,anchor=north) |- (-4,1);
+		\draw (node cs:name=kommazahl,anchor=north) |- (-4,1);		
+		\draw [arrows=-{Triangle[open, angle=60:3mm]}] (node cs:name=term,anchor=south) (-4,1) -- (-4,1.7);
+		
+		\draw (node cs:name=zahl,anchor=north) |- (-1,3);
+		\draw (node cs:name=rechenterm,anchor=north) |- (-1,3);
+		\draw [arrows=-{Triangle[open, angle=60:3mm]}] (node cs:name=term,anchor=south) (-1,3) -- (-1,3.7);
+		
+	\end{tikzpicture}
+	
+	\caption{Vererbungshierarchie mit Kommazahl}
+	\label{fig:Term_Kommazahl}
+\end{figure}
