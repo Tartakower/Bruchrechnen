@@ -9,7 +9,7 @@ Lies den Algorithmus zum Kürzen eines Bruchs durch:
 \begin{itemize}
 	\item Nimm einen Bruch.
 	\item Merke dir den Zähler des Bruchs in einer Variablen.
-	\item Verfahre ebenso mit dem Nenner.
+	\item Merke dir den Nenner des Bruchs in einer anderen Variablen.
 	\item Berechne den größten gemeinsamen Teiler (ggT) von Zähler und Nenner. Es gibt dafür eine fertige Funktion.
 	\item Berechne den gekürzten Zähler, indem du den alten Zähler durch den ggT teilst. 
 	\item Berechne ebenso den gekürzten Nenner.
@@ -19,25 +19,29 @@ Lies den Algorithmus zum Kürzen eines Bruchs durch:
 
 Verstehst du das Vorgehen? Andernfalls stelle deine Fragen dem Betreuer.
 
-\subsection*{Die Funktion zum Kürzen von Brüchen}
-\label{sec:FunktionKuerzen}
+\subsection*{Der größte gemeinsame Teiler zweier Zahlen (ggT)}
+\label{sec:FunktionGgT}
 
 Die Berechnung des ggT erfolgt mittels der Funktion
 \begin{quote}
 \texttt{mathefunktionen.berechne\_ggT}.
 \end{quote}
+
 In der Funktion zum Kürzen wird also eine Zeile enthalten sein:
 
 \begin{codePython}
 ggT = mathefunktionen.berechne_ggT(alterZaehler, alterNenner)
 \end{codePython}
 
+\subsection*{Die Funktion zum Kürzen von Brüchen}
+\label{sec:FunktionKuerzen}
+
 Beachte, dass beim Teilen durch den ggT die Division \texttt{//} benutzt wird, damit der neue Zähler und der neue Nenner ganze Zahlen werden!
 
 \begin{codePython}
-def kuerzeBruch(bruch: Bruch) -> Bruch:
-	alterZaehler = bruch.zaehler
-	alterNenner = bruch.nenner
+def kuerzeBruch(alterBruch: Bruch) -> Bruch:
+	alterZaehler = alterBruch.zaehler
+	alterNenner = alterBruch.nenner
 	ggT = mathefunktionen.berechne_ggT(alterZaehler, alterNenner)
 	neuerZaehler = alterZaehler // ggT
 	neuerNenner = alterNenner // ggT
@@ -52,6 +56,7 @@ Gib die Funktion in den Editor der Entwicklungsumgebung (IDE) ein. Zeigt die IDE
 \subsection*{Überprüfung des Ergebnisses}
 
 Wir überprüfen das Ergebnis mit Hilfe folgender Datei:
+
 \begin{quote}
 \texttt{uebungsplatz.py}
 \end{quote}
@@ -64,7 +69,17 @@ gekuerzter_bruch = mathehelfer.kuerzeBruch(bruch)
 print(gekuerzter_bruch)
 \end{codePython}
 
-Jetzt führen wir \texttt{uebungsplatz.py} als Python-Skript aus. Das Ergebnis sollte jetzt diese Zeile enthalten:
+\subsection*{Ausführen eines Python-Programms}
+
+Jetzt führen wir \texttt{uebungsplatz.py} als Python-Programm aus. Das geht in VS Code auf zwei verschiedene Weisen:
+
+\begin{itemize}
+	\item Im Terminal: \texttt{python3 uebungsplatz.py}
+	\item Klicke mit der Maus rechts oben in der Ecke auf $\medtriangleright$ und wähle \textit{Führen Sie die Python-Datei aus}.
+\end{itemize}
+
+
+Das Ergebnis sollte jetzt diese Zeile enthalten:
 \begin{quote}
 \texttt{Bruch(zaehler=3, nenner=4)}
 \end{quote}

@@ -1,0 +1,106 @@
+\documentclass[12p,numbers=noendperiod,DIV=15]{scrreprt}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Schriftart DejaVu
+\usepackage{dejavu}
+\usepackage[onehalfspacing]{setspace}
+%\setstretch{1.5}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus0.5ex minus0.5ex}
+
+\usepackage{enumitem}
+\setlist{noitemsep,topsep=0pt}
+
+% Kopf- und Fußzeile
+%\pagestyle{headings}
+%\usepackage[singlespacing=true]{scrlayer-scrpage}
+%\ifoot{\copyright~Norbert Seulberger, 2021}
+%\cfoot{}
+%\ofoot{\pagemark}
+%\pagestyle{scrheadings}
+\pagestyle{plain}
+%\setkomafont{pageheadfoot}{\small}
+
+% Koma-Script für Inhaltsverzeichnis
+\usepackage{tocbasic}
+\DeclareTOCStyleEntries[dynnumwidth=true]{tocline}{chapter,section,subsection}
+
+\usepackage{color}
+\usepackage{listings}
+\usepackage[fleqn]{amsmath}
+\usepackage{fdsymbol}
+\usepackage{scrhack}
+%\usepackage[top=20mm,left=20mm,right=20mm,bottom=30mm]{geometry}
+\mathindent=2em
+
+\sloppy
+
+%\input{Umgebungen}
+\input{ListingsStyles}
+
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+
+\begin{document}
+	
+\title{Mathehelfer Bruchrechnen}
+\subtitle{Ein Hackathon für Kinder und Jugendliche}
+\author{Norbert Seulberger}
+\date{Mai 2023}
+
+\maketitle
+
+\tableofcontents
+
+%\chapter{Thema und Planung}
+%
+%\include{./Kapitel/Ankuendigung}
+%\include{./Kapitel/Aufgabenstellung}
+%\include{./Kapitel/TechnischeRahmenbedingungen}
+%\include{./Kapitel/ZeitlichePlanung}
+%\include{./Kapitel/Vorkenntnisse}
+
+\chapter{MathML}
+
+\include{./Kapitel/MathML}
+\include{./Kapitel/AufgabeMathML}
+
+\chapter{Algorithmen und Funktionen}
+
+\include{./Kapitel/Algorithmen}
+\include{./Kapitel/Variablen}
+\include{./Kapitel/Funktionen}
+\include{./Kapitel/FunktionKuerzen}
+\include{./Kapitel/FunktionErweitern}
+\include{./Kapitel/FunktionMultiplikation}
+
+\chapter{Zeichenketten}
+\include{./Kapitel/Zeichenketten}
+\include{./Kapitel/MathMLSchreibeBruch}
+
+\chapter{Das Erstellen der Formeln}
+
+\include{./Kapitel/FormelKuerzen}
+\include{./Kapitel/FormelErweitern}
+\include{./Kapitel/FormelMultiplikation}
+
+%\chapter{Weitere Aufgaben}
+%
+%\include{./Kapitel/AufgabeDivision}
+%\include{./Kapitel/AufgabeAddition}
+%\include{./Kapitel/AufgabeBruchZuKommazahl}
+%\include{./Kapitel/AufgabeKommazahlZuBruch}
+%\include{./Kapitel/AufgabeGemischteZahl}
+%\include{./Kapitel/AufgabeOOP}
+
+%\chapter{Lösungen}
+%
+%\include{./Kapitel/LoesungKuerzen}
+%\include{./Kapitel/LoesungErweitern}
+%\include{./Kapitel/LoesungMultiplikation}
+
+
+\end{document}
