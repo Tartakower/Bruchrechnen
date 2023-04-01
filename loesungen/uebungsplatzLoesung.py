@@ -1,4 +1,4 @@
-from datenstrukturen import Bruch
+from datenklassen import Bruch
 import mathehelferLoesung
 
 formel = "<math>"

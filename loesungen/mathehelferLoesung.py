@@ -1,14 +1,14 @@
 # Ab hier bitte nichts ändern!
 from __future__ import annotations
 
-from datenstrukturen import Bruch
+from datenklassen import Bruch
 import mathefunktionen
 
 # Ab hier dürft ihr Änderungen vornehmen.
 
-def kuerzeBruch(bruch: Bruch) -> Bruch:
-    alterZaehler = bruch.zaehler
-    alterNenner = bruch.nenner
+def kuerzeBruch(alterBruch: Bruch) -> Bruch:
+    alterZaehler = alterBruch.zaehler
+    alterNenner = alterBruch.nenner
     ggT = mathefunktionen.berechne_ggT(alterZaehler, alterNenner)
     neuerZaehler = alterZaehler // ggT
     neuerNenner = alterNenner // ggT
