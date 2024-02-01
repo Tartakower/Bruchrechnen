@@ -1,5 +1,6 @@
-from datenstrukturen import Bruch
+
 import mathefunktionen
+from datenklassen import Bruch
 import mathehelferLoesung
 
 def test_berechne_ggT() -> None:
